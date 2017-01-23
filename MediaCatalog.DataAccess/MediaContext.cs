@@ -8,7 +8,7 @@ namespace MediaCatalog.DataAccess
 
         public MediaContext() : base("name=MediaContext")
         {
-
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public static MediaContext Create()
@@ -17,5 +17,8 @@ namespace MediaCatalog.DataAccess
         }
 
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Person> People { get; set; }
+        public DbSet<Media> Media { get; set; }
+        public DbSet<StaffMember> StaffMembers { get; set; }
     }
 }

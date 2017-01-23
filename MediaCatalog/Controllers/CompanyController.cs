@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using MediaCatalog.DataAccess;
-using System.Web.Http;
+﻿using MediaCatalog.DataAccess;
 using MediaCatalog.Domain;
+using System.Collections.Generic;
+using System.Web.Http;
 
 namespace MediaCatalog.Controllers
 {
@@ -16,7 +16,7 @@ namespace MediaCatalog.Controllers
 
         public IEnumerable<Company> Get()
         {
-            return _context.Companies;
+            return _context.Companies.Include("Staff");
         }
     }
 }
