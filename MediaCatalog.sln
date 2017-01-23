@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaCatalog", "MediaCatalog\MediaCatalog.csproj", "{18257DCB-0EEF-48E0-AA22-2D9247581DB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaCatalog.Domain", "MediaCatalog.Domain\MediaCatalog.Domain.csproj", "{90A5185D-65B6-49FB-AD33-97C7077C4E3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaCatalog.DataAccess", "MediaCatalog.DataAccess\MediaCatalog.DataAccess.csproj", "{B179CDA1-5922-4E97-B7D4-1EBF2F15FC00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{18257DCB-0EEF-48E0-AA22-2D9247581DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18257DCB-0EEF-48E0-AA22-2D9247581DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18257DCB-0EEF-48E0-AA22-2D9247581DB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A5185D-65B6-49FB-AD33-97C7077C4E3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A5185D-65B6-49FB-AD33-97C7077C4E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A5185D-65B6-49FB-AD33-97C7077C4E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A5185D-65B6-49FB-AD33-97C7077C4E3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B179CDA1-5922-4E97-B7D4-1EBF2F15FC00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B179CDA1-5922-4E97-B7D4-1EBF2F15FC00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B179CDA1-5922-4E97-B7D4-1EBF2F15FC00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B179CDA1-5922-4E97-B7D4-1EBF2F15FC00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
