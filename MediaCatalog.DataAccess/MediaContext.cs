@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using MediaCatalog.Domain;
+using System.Data.Entity;
 
 namespace MediaCatalog.DataAccess
 {
@@ -9,5 +10,12 @@ namespace MediaCatalog.DataAccess
         {
 
         }
+
+        public static MediaContext Create()
+        {
+            return new MediaContext();
+        }
+
+        public DbSet<Company> Companies { get; set; }
     }
 }
