@@ -2,3 +2,15 @@
     ViewBag.Title = "Home Page";
 }
 
+<h2>Media</h2>
+
+<div ng-app="media">
+    <media-app></media-app>
+</div>
+
+@section scripts
+{
+    @*<script src="~/app/modules.min.js"></script>*@
+    <script src="~/app/media/media-app.module.js"></script>
+    <script src="~/app/media/media-list.component.js"></script>
+}

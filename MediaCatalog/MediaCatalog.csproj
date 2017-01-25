@@ -163,6 +163,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\media\media-app.component.html" />
+    <Content Include="app\media\media-app.module.js" />
+    <Content Include="app\media\media-list.component.js" />
+    <Content Include="app\media\media-list.component.html" />
+    <Content Include="app\modules.min.js" />
     <Content Include="css\site.css" />
     <Content Include="css\site.min.css" />
     <Content Include="css\vendor.min.css" />
