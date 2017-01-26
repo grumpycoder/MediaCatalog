@@ -1,2 +1,17 @@
 ﻿
 <h2>Media List Here</h2>
+
+
+
+<div>
+    <ul>
+        <li ng-repeat="item in $ctrl.model">
+            {{item.name}}
+        </li>
+    </ul>
+</div>
+
+
+<pre>
+    {{$ctrl.model | json}}
+</pre>

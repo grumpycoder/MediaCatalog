@@ -1,8 +1,12 @@
 ﻿//app.module.js
-(function () {
+(function() {
     'use strict';
 
-    var module = angular.module('media', ['ngComponentRouter']);
+    var module = angular.module('media',
+    [
+        'app.service', 
+        'ngComponentRouter'
+    ]);
 
     //module.config(function () {//$locationProvider.html5Mode(true); });
 
@@ -19,5 +23,4 @@
 
     module.value('$routerRootComponent', 'mediaApp');
 
-}
-)();
+})();
