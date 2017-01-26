@@ -3,23 +3,19 @@
     'use strict';
     var module = angular.module('app.service').factory('MediaService', mediaService);
 
-    function mediaService() {
+    function mediaService($http) {
 
         return {
             getAllMedia: getAllMedia
         };
 
         function getAllMedia() {
-            return [
-                {
-                    id: 1,
-                    name: 'Test 1'
-                },
-                {
-                    id: 2,
-                    name: 'Test 2'
-                }
-            ];
+            return $http.get('api/media').then(function (r) {
+                console.log('r', r);
+                return r.data;
+            }).catch(function(err) {
+                console.log(err.message);
+            });
         }
     }
   

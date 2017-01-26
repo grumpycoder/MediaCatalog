@@ -1,17 +1,24 @@
 ﻿
-<h2>Media List Here</h2>
+<div class="container-fluid">
+    <table class="table table-responsive table-condensed">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Company</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat ="item in $ctrl.model">
+                <td>{{item.id}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.isbn}}</td>
+                <td>{{item.company.name}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 
-
-
-<div>
-    <ul>
-        <li ng-repeat="item in $ctrl.model">
-            {{item.name}}
-        </li>
-    </ul>
 </div>
-
-
-<pre>
-    {{$ctrl.model | json}}
-</pre>

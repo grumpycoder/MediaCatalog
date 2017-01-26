@@ -3,14 +3,21 @@
     'use strict';
 
     var module = angular.module('media');
-    
-    function controller(service) {
-        var $ctrl = this;
 
+    function controller(service) {
         console.log('list component activated');
 
-        $ctrl.model = service.getAllMedia();
-        console.log('data', $ctrl.model);
+        var $ctrl = this;
+
+        $ctrl.$onInit = function () {
+            $ctrl.search();
+        }
+
+        $ctrl.search = function() {
+            service.getAllMedia().then(function (r) {
+                $ctrl.model = r;
+            });
+        }
     }
 
     module.component('list',
