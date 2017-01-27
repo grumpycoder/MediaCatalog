@@ -161,9 +161,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PredicateBuilder.cs" />
+    <Compile Include="Models\MediaModel.cs" />
+    <Compile Include="Models\MediaSearchModel.cs" />
+    <Compile Include="Models\PagerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\directives\app-directives.modules.js" />
     <Content Include="app\media\media-app.component.html" />
     <Content Include="app\media\media-app.module.js" />
     <Content Include="app\media\media-list.component.js" />
@@ -200,7 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -4,8 +4,11 @@
 
     var module = angular.module('media',
     [
-        'app.service', 
-        'ngComponentRouter'
+        'app.service',
+        'app.directives', 
+        'ngComponentRouter',
+        'ui.bootstrap',
+        'smart-table'
     ]);
 
     //module.config(function () {//$locationProvider.html5Mode(true); });

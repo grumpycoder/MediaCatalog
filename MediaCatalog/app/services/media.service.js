@@ -9,15 +9,16 @@
             getAllMedia: getAllMedia
         };
 
-        function getAllMedia() {
-            return $http.get('api/media').then(function (r) {
-                console.log('r', r);
+        function getAllMedia(searchModel) {
+            console.log('service searchModel', searchModel);
+
+            return $http.get('api/media/search/', { params: searchModel }).then(function (r) {
                 return r.data;
-            }).catch(function(err) {
+            }).catch(function (err) {
                 console.log(err.message);
             });
         }
     }
-  
+
 }
 )();

@@ -1,5 +1,4 @@
-﻿
-<div class="container-fluid">
+﻿<div class="container-fluid" st-table="$ctrl.model" st-pipe="$ctrl.search">
     <table class="table table-responsive table-condensed">
         <thead>
         <tr>
@@ -9,16 +8,42 @@
             <th>Company</th>
             <th>Action</th>
         </tr>
+        <tr>
+            <td><button class="btn btn-primary" st-submit-search>
+    <i class="glyphicon glyphicon-search"></i> Search
+</button></td>
+            <td><input type="text" ng-model="$ctrl.searchModel.title" class="form-control" placeholder="Title" /></td>
+            <td><input type="text" ng-model="$ctrl.searchModel.isbn" class="form-control" placeholder="ISBN" /></td>
+            <td><input type="text" ng-model="$ctrl.searchModel.company" class="form-control" placeholder="Company Name" /></td>
+            <td></td>
+        </tr>
         </thead>
         <tbody>
-            <tr ng-repeat ="item in $ctrl.model">
+            <tr ng-repeat="item in $ctrl.media">
                 <td>{{item.id}}</td>
                 <td>{{item.title}}</td>
                 <td>{{item.isbn}}</td>
-                <td>{{item.company.name}}</td>
+                <td>{{item.company}}</td>
                 <td></td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <span uib-pagination total-items="$ctrl.searchModel.totalCount"
+                          ng-model="$ctrl.searchModel.page"
+                          max-size="5"
+                          items-per-page="$ctrl.searchModel.pageSize"
+                          class="pagination-sm"
+                          boundary-link-numbers="true"
+                          ng-change="$ctrl.paged()"
+                          rotate="false">
+                    </span>
+                </td>
+            </tr>
+        </tfoot>
     </table>
+
+
 
 </div>
