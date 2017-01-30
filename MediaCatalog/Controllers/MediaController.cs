@@ -39,7 +39,7 @@ namespace MediaCatalog.Controllers
                        .Where(pred)
                        .Take(pager.PageSize ?? PAGE_SIZE)
                        .ToList()
-                       .Select(m => new MediaModel()
+                       .Select(m => new MediaModel
                        {
                            Id = m.Id,
                            Title = m.Title,

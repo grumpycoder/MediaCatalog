@@ -38,7 +38,7 @@ gulp.task('app:js', function () {
         .pipe($.sourcemaps.init())
         .pipe($.ngAnnotate({add: true}))
         .pipe($.concat('modules.min.js'))
-        .pipe($.uglify())
+        //.pipe($.uglify())
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest('app/'));
 });
