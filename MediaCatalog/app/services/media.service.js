@@ -6,13 +6,20 @@
     function mediaService($http) {
 
         return {
+            getMedia: getMedia, 
             getAllMedia: getAllMedia
         };
 
-        function getAllMedia(searchModel) {
-            console.log('service searchModel', searchModel);
+        function getMedia(id) {
+            return $http.get('api/media/' + id).then(function (r) {
+                return r.data;
+            }).catch(function (err) {
+                console.log(err.message);
+            });
+        }
 
-            return $http.get('api/media/search/', { params: searchModel }).then(function (r) {
+        function getAllMedia(searchModel) {
+            return $http.get('api/media', { params: searchModel }).then(function (r) {
                 return r.data;
             }).catch(function (err) {
                 console.log(err.message);

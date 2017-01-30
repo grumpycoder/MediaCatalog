@@ -1,10 +1,10 @@
 ﻿using MediaCatalog.DataAccess;
+using MediaCatalog.Domain;
+using MediaCatalog.Helpers;
 using MediaCatalog.Models;
 using System;
 using System.Linq;
 using System.Web.Http;
-using MediaCatalog.Domain;
-using MediaCatalog.Helpers;
 
 namespace MediaCatalog.Controllers
 {
@@ -55,5 +55,10 @@ namespace MediaCatalog.Controllers
 
         }
 
+        public object Get(int id)
+        {
+            var media = _context.Media.Include("Company").FirstOrDefault(m => m.Id == id);
+            return media;
+        }
     }
 }
