@@ -1,14 +1,30 @@
 ﻿
 
 <div class="modal-header">
-    <h3>{{$ctrl.media.title}}</h3>
+    <h3 class="modal-title">{{$ctrl.media.title}}</h3>
 </div>
 <div class="modal-body">
-    <div>{{$ctrl.media.isbn}}</div>
-    <div>{{$ctrl.media.company.name}}</div>
-    <div>{{$ctrl.media.company.websiteUrl}}</div>
-    <div>{{$ctrl.media.company.email}}</div>
-    <div>{{$ctrl.media.summary}}</div>
+    <div>
+        <div>ISBN: {{$ctrl.media.isbn}}</div>
+        <div>Summary: {{$ctrl.media.summary}}</div>
+    </div>
+
+    <div>
+        <h4>Company</h4>
+        <div>{{$ctrl.media.companyName}}</div>
+        <div>{{$ctrl.media.companyWebsiteUrl}}</div>
+        <div>{{$ctrl.media.companyEmail}}</div>
+    </div>
+    <div>
+        <h4>Staff</h4>
+        {{ $ctrl.staff | json }}
+        <ul class="list-unstyled">
+            <li ng-repeat="member in $ctrl.media.staff">
+                <div>{{ member.role }}</div>
+                <div>{{member.firstname}} {{member.lastname}}</div>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="modal-footer" ng-show="$ctrl.asModal">
     <button class="btn btn-default" ng-click="$ctrl.cancel()">Close</button>

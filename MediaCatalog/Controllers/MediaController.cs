@@ -57,7 +57,23 @@ namespace MediaCatalog.Controllers
 
         public object Get(int id)
         {
-            var media = _context.Media.Include("Company").FirstOrDefault(m => m.Id == id);
+            var media = _context.Media.Include("Company.Staff").Select(m => new MediaSummaryModel()
+            {
+                Id = m.Id,
+                Title = m.Title,
+                ISBN = m.ISBN,
+                CompanyName = m.Company.Name,
+                CompanyEmail = m.Company.Email,
+                CompanyWebsiteUrl = m.Company.WebsiteUrl,
+                Staff = m.Company.Staff.Select(s => new StaffModel()
+                {
+                    Id = s.Id,
+                    Firstname = s.Person.Firstname,
+                    Lastname = s.Person.Lastname,
+                    Role = s.StaffRole.Name
+                })
+            }).FirstOrDefault(m => m.Id == id);
+
             return media;
         }
     }

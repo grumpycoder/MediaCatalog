@@ -12,6 +12,7 @@
 
         function getMedia(id) {
             return $http.get('api/media/' + id).then(function (r) {
+                console.log('data', r.data);
                 return r.data;
             }).catch(function (err) {
                 console.log(err.message);

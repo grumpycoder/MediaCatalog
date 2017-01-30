@@ -164,7 +164,9 @@
     <Compile Include="Helpers\PredicateBuilder.cs" />
     <Compile Include="Models\MediaModel.cs" />
     <Compile Include="Models\MediaSearchModel.cs" />
+    <Compile Include="Models\MediaSummaryModel.cs" />
     <Compile Include="Models\PagerModel.cs" />
+    <Compile Include="Models\StaffModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
