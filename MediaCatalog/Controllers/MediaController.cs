@@ -78,15 +78,18 @@ namespace MediaCatalog.Controllers
             return media;
         }
 
-        public object Put(MediaModel model)
+        public object Put(MediaSummaryModel model)
         {
-            var media = _context.Media.Find(model.Id);
-
+            var media = _context.Media.Include("Company").FirstOrDefault(m => m.Id == model.Id);
+            
             if (media != null)
             {
                 media.Title = model.Title;
                 media.ISBN = model.ISBN;
                 media.Summary = model.Summary;
+                media.Company.Name = model.CompanyName;
+                media.Company.Email = model.CompanyEmail;
+                media.Company.WebsiteUrl = model.CompanyWebsiteUrl;
             }
             _context.SaveChanges();
             return model;

@@ -3,19 +3,37 @@
 <form name="mediaForm" novalidate>
 
     <div class="modal-body">
-        <div class="form-group">
-            <label class="control-label">Title</label>
-            <input type="text" class="form-control" ng-model="$ctrl.media.title" />
-        </div>
-        <div class="form-group">
-            <label class="control-label">Summary</label>
-            <textarea class="form-control" ng-model="$ctrl.media.summary"></textarea>
-        </div>
-        <div class="form-group">
-            <label class="control-label">ISBN</label>
-            <input type="text" class="form-control" ng-model="$ctrl.media.isbn" />
-        </div>
+        <fieldset>
+            <legend>Media</legend>
+            <div class="form-group">
+                <label class="control-label">Title</label>
+                <input type="text" class="form-control" ng-model="$ctrl.media.title"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Summary</label>
+                <textarea class="form-control" ng-model="$ctrl.media.summary"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="control-label">ISBN</label>
+                <input type="text" class="form-control" ng-model="$ctrl.media.isbn"/>
+            </div>
+        </fieldset>
         
+        <fieldset>
+            <legend>Company</legend>
+            <div class="form-group">
+                <label class="control-label">Name</label>
+                <input type="text" class="form-control" ng-model="$ctrl.media.companyName" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input type="text" class="form-control" ng-model="$ctrl.media.companyEmail" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Website</label>
+                <input type="text" class="form-control" ng-model="$ctrl.media.companyWebsiteUrl" />
+            </div>
+        </fieldset>
     </div>
 
     <div class="modal-footer">
