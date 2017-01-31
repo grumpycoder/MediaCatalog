@@ -31,6 +31,26 @@
             $ctrl.search(tableStateRef);
         }
 
+        $ctrl.edit = function(item) {
+            $ctrl.selectedMedia = item; 
+            $uibModal.open({
+                component: 'mediaEdit',
+                bindings: {
+                    modalInstance: "<"
+                },
+                resolve: {
+                    id: item.id
+                },
+                size: 'lg'
+            }).result.then(function (result) {
+                console.info("I was closed, so do what I need to do myContent's controller now.  Result was->");
+                console.info(result);
+                angular.extend($ctrl.selectedMedia, result);
+            }, function (reason) {
+                console.info("I was dimissed, so do what I need to do myContent's controller now.  Reason was->" + reason);
+            });
+        }
+
         $ctrl.showDetails = function (id) {
             $uibModal.open({
                 component: 'mediaSummary',
@@ -49,6 +69,7 @@
                 console.info("I was dimissed, so do what I need to do myContent's controller now.  Reason was->" + reason);
             });
         }
+
     }
 
     module.component('list',

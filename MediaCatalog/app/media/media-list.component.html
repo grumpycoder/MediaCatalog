@@ -23,7 +23,9 @@
         </thead>
         <tbody>
         <tr ng-repeat="item in $ctrl.media">
-            <td>{{item.id}}</td>
+            <td>
+                <button class="btn btn-default" ng-click="$ctrl.edit(item)">Edit</button>
+            </td>
             <td>{{item.title}}</td>
             <td>{{item.isbn}}</td>
             <td>{{item.company}}</td>

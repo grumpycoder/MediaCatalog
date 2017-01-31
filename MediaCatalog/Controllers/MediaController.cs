@@ -61,6 +61,7 @@ namespace MediaCatalog.Controllers
             {
                 Id = m.Id,
                 Title = m.Title,
+                Summary = m.Summary,
                 ISBN = m.ISBN,
                 CompanyName = m.Company.Name,
                 CompanyEmail = m.Company.Email,
@@ -76,5 +77,20 @@ namespace MediaCatalog.Controllers
 
             return media;
         }
+
+        public object Put(MediaModel model)
+        {
+            var media = _context.Media.Find(model.Id);
+
+            if (media != null)
+            {
+                media.Title = model.Title;
+                media.ISBN = model.ISBN;
+                media.Summary = model.Summary;
+            }
+            _context.SaveChanges();
+            return model;
+        }
+
     }
 }

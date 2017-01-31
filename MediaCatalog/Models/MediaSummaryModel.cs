@@ -6,6 +6,7 @@ namespace MediaCatalog.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Summary { get; set; }
         public string ISBN { get; set; }
         public string CompanyName { get; set; }
         public string CompanyWebsiteUrl { get; set; }

@@ -173,6 +173,8 @@
     <Content Include="app\directives\app-directives.modules.js" />
     <Content Include="app\media\media-app.component.html" />
     <Content Include="app\media\media-app.module.js" />
+    <Content Include="app\media\media-edit.component.html" />
+    <Content Include="app\media\media-edit.component.js" />
     <Content Include="app\media\media-summary.component.html" />
     <Content Include="app\media\media-summary.component.js" />
     <Content Include="app\media\media-list.component.js" />
