@@ -7,16 +7,16 @@ namespace MediaCatalog.Controllers
 {
     public class CompanyController : ApiController
     {
-        private MediaContext _context;
+        private LibraryContext _context;
 
         public CompanyController()
         {
-            _context = MediaContext.Create();
+            _context = LibraryContext.Create();
         }
 
-        public IEnumerable<Company> Get()
-        {
-            return _context.Companies.Include("Staff");
-        }
+        //public IEnumerable<Publisher> Get()
+        //{
+        //    //return _context.Companies.Include("Staff");
+        //}
     }
 }

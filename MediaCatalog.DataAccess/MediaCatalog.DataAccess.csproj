@@ -49,7 +49,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MediaContext.cs" />
+    <Compile Include="Conventions\ForeignKeyNamingConvention.cs" />
+    <Compile Include="LibraryContext.cs" />
+    <Compile Include="Migrations\201702011541253_init.cs" />
+    <Compile Include="Migrations\201702011541253_init.Designer.cs">
+      <DependentUpon>201702011541253_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702011554295_publishers.cs" />
+    <Compile Include="Migrations\201702011554295_publishers.Designer.cs">
+      <DependentUpon>201702011554295_publishers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702011730429_products.cs" />
+    <Compile Include="Migrations\201702011730429_products.Designer.cs">
+      <DependentUpon>201702011730429_products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702061650467_staff.cs" />
+    <Compile Include="Migrations\201702061650467_staff.Designer.cs">
+      <DependentUpon>201702061650467_staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +79,20 @@
       <Project>{90A5185D-65B6-49FB-AD33-97C7077C4E3E}</Project>
       <Name>MediaCatalog.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702011541253_init.resx">
+      <DependentUpon>201702011541253_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702011554295_publishers.resx">
+      <DependentUpon>201702011554295_publishers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702011730429_products.resx">
+      <DependentUpon>201702011730429_products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702061650467_staff.resx">
+      <DependentUpon>201702061650467_staff.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

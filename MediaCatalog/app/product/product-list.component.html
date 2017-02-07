@@ -1,12 +1,15 @@
 ﻿<div class="container-fluid" st-table="$ctrl.model" st-pipe="$ctrl.search">
 
+    <button class="btn btn-default" ng-click="$ctrl.create()">New</button>
+    
+    
     <table class="table table-responsive table-condensed">
         <thead>
         <tr>
             <th>Id</th>
             <th>Title</th>
             <th>ISBN</th>
-            <th>Company</th>
+            <th>Publisher</th>
             <th>Action</th>
         </tr>
         <tr>
@@ -17,7 +20,7 @@
             </td>
             <td><input type="text" ng-model="$ctrl.searchModel.title" class="form-control" placeholder="Title"/></td>
             <td><input type="text" ng-model="$ctrl.searchModel.isbn" class="form-control" placeholder="ISBN"/></td>
-            <td><input type="text" ng-model="$ctrl.searchModel.company" class="form-control" placeholder="Company Name"/></td>
+            <td><input type="text" ng-model="$ctrl.searchModel.company" class="form-control" placeholder="Publisher Name"/></td>
             <td></td>
         </tr>
         </thead>

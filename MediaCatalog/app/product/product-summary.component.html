@@ -1,0 +1,72 @@
+﻿
+
+<div class="modal-header">
+    <h3 class="modal-title">{{$ctrl.media.title}}</h3>
+</div>
+<div class="modal-body">
+    <div>
+        <div>ISBN: {{$ctrl.media.isbn}}</div>
+        <div>Summary: {{$ctrl.media.summary}}</div>
+    </div>
+
+    <div>
+        <h4>Publisher</h4>
+        <div>{{$ctrl.media.companyName}}</div>
+        <div>{{$ctrl.media.companyWebsiteUrl}}</div>
+        <div>{{$ctrl.media.companyEmail}}</div>
+    </div>
+    <div>
+        <h4>Staff <a href="#" ng-click="$ctrl.addStaffVisible = !$ctrl.addStaffVisible"><i class="glyphicon glyphicon-plus-sign"></i></a></h4>
+
+        <div ng-show="$ctrl.addStaffVisible" class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-2 control-label">Firstname</label>
+                        <div class="col-sm-4">
+                            <input type="text" ng-model="$ctrl.staff.firstname" class="form-control" placeholder="Firstname" />
+                        </div>
+
+                        <label class="col-sm-2 control-label">Lastname</label>
+                        <div class="col-sm-4">
+                            <input type="text" ng-model="$ctrl.staff.lastname" class="form-control" placeholder="Lastname" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-4">
+                            <input type="text" ng-model="$ctrl.staff.email" class="form-control" placeholder="Email" />
+                        </div>
+
+                        <label class="col-sm-2 control-label">Role</label>
+                        <div class="col-sm-4">
+                            <input type="text" ng-model="$ctrl.staff.role" class="form-control" placeholder="Role" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pull-right">
+                    <button class="btn btn-success" ng-click="$ctrl.createStaff()">Create</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <ul class="list-unstyled">
+                <li ng-repeat="member in $ctrl.media.staff">
+                    <div>{{ member.role }}</div>
+                    <div>{{ member.firstname }} {{ member.lastname }}</div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="$ctrl.cancel()">Close</button>
+</div>

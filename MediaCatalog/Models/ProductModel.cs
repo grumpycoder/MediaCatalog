@@ -1,6 +1,6 @@
 ﻿namespace MediaCatalog.Models
 {
-    public class MediaModel
+    public class ProductModel
     {
         public int Id { get; set; }
         public string Title { get; set; }

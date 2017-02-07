@@ -1,9 +1,9 @@
 ﻿namespace MediaCatalog.Models
 {
-    public class MediaSearchModel : PagerModel<MediaModel>
+    public class ProductSearchModel : PagerModel<ProductModel>
     {
         public string Title { get; set; }
         public string ISBN { get; set; }
-        public string Company { get; set; }
+        public string Publisher { get; set; }
     }
 }

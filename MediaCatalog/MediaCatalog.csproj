@@ -157,31 +157,39 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\PublisherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PredicateBuilder.cs" />
-    <Compile Include="Models\MediaModel.cs" />
-    <Compile Include="Models\MediaSearchModel.cs" />
+    <Compile Include="Models\CreateEditProductModel.cs" />
+    <Compile Include="Models\CreateEditPublisherModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ProductSearchModel.cs" />
     <Compile Include="Models\MediaSummaryModel.cs" />
     <Compile Include="Models\PagerModel.cs" />
     <Compile Include="Models\StaffModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\directives\app-directives.modules.js" />
-    <Content Include="app\media\media-app.component.html" />
-    <Content Include="app\media\media-app.module.js" />
-    <Content Include="app\media\media-edit.component.html" />
-    <Content Include="app\media\media-edit.component.js" />
-    <Content Include="app\media\media-summary.component.html" />
-    <Content Include="app\media\media-summary.component.js" />
-    <Content Include="app\media\media-list.component.js" />
-    <Content Include="app\media\media-list.component.html" />
+    <Content Include="app\common\publisher-list.component.html" />
+    <Content Include="app\directives\directives.modules.js" />
+    <Content Include="app\product-app.component.html" />
+    <Content Include="app\product-app.module.js" />
+    <Content Include="app\product\product-edit.component.html" />
+    <Content Include="app\product\product-edit.component.js" />
+    <Content Include="app\product\product-summary.component.html" />
+    <Content Include="app\product\product-summary.component.js" />
+    <Content Include="app\product\product-list.component.js" />
+    <Content Include="app\product\product-list.component.html" />
     <Content Include="app\modules.min.js" />
-    <Content Include="app\services\app-service.module.js" />
-    <Content Include="app\services\media.service.js" />
+    <Content Include="app\publisher\publisher-edit.component.html" />
+    <Content Include="app\publisher\publisher-edit.component.js" />
+    <Content Include="app\services\services.module.js" />
+    <Content Include="app\services\product.service.js" />
+    <Content Include="app\common\publisher-list.component.js" />
+    <Content Include="app\common\app-components.module.js" />
     <Content Include="css\site.css" />
     <Content Include="css\site.min.css" />
     <Content Include="css\vendor.min.css" />

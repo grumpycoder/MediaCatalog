@@ -12,6 +12,7 @@ var gulp = require('gulp'),
 
 var ngAnnotage = require('ng-annotate');
 
+
 var config = {
     //Include all js files but exclude any min.js files
     js: ['app/**/*.js', '!app/**/*.min.js'],
@@ -34,11 +35,12 @@ gulp.task('watch', function () {
 gulp.task('app:js', function () {
     console.log('building app scripts');
     return gulp.src(config.js)
+        .pipe($.angularFilesort())
         .pipe($.print())
         .pipe($.sourcemaps.init())
-        .pipe($.ngAnnotate({add: true}))
+        .pipe($.ngAnnotate({ add: true }))
         .pipe($.concat('modules.min.js'))
-        //.pipe($.uglify())
+        .pipe($.uglify())
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest('app/'));
 });
