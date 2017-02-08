@@ -19,8 +19,8 @@
         $ctrl.search = function (tableState) {
             tableStateRef = tableState;
 
-            service.getAllMedia($ctrl.searchModel).then(function (r) {
-                $ctrl.media = r.results;
+            service.getAllProducts($ctrl.searchModel).then(function (r) {
+                $ctrl.products = r.results;
                 $ctrl.searchModel = r;
                 delete $ctrl.searchModel.results;
             });
@@ -32,7 +32,7 @@
 
         $ctrl.edit = function(item) {
             $uibModal.open({
-                component: 'mediaEdit',
+                component: 'productEdit',
                 bindings: {
                     modalInstance: "<"
                 },
@@ -48,15 +48,13 @@
 
         $ctrl.create = function () {
             $uibModal.open({
-                component: 'mediaEdit',
+                component: 'productEdit',
                 bindings: {
                     modalInstance: "<"
                 },
                 size: 'lg'
             }).result.then(function (result) {
-                console.info("I was closed, so do what I need to do myContent's controller now.  Result was->");
-                console.info('returning result', result);
-                $ctrl.media.unshift(result);
+                $ctrl.products.unshift(result);
             }, function (reason) {
                 console.info("I was dimissed, so do what I need to do myContent's controller now.  Reason was->" + reason);
             });
@@ -64,7 +62,7 @@
 
         $ctrl.showDetails = function (id) {
             $uibModal.open({
-                component: 'mediaSummary',
+                component: 'productSummary',
                 bindings: {
                     modalInstance: "<"
                 },

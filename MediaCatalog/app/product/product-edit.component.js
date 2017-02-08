@@ -10,8 +10,8 @@
                 $ctrl.id = $ctrl.resolve.id;
             }
             if ($ctrl.id) {
-                service.getMedia($ctrl.id).then(function (r) {
-                    $ctrl.media = r;
+                service.getProduct($ctrl.id).then(function (r) {
+                    $ctrl.product = r;
                 });
             }
         }
@@ -21,18 +21,18 @@
         }
 
         $ctrl.save = function () {
-            return service.save($ctrl.media).then(function (r) {
-                angular.extend($ctrl.media, r);
+            return service.save($ctrl.product).then(function (r) {
+                angular.extend($ctrl.product, r);
             }).catch(function (err) {
                 console.log('Error saving product', err.message);
             }).finally(function () {
-                $ctrl.modalInstance.close($ctrl.media);
+                $ctrl.modalInstance.close($ctrl.product);
             });
         }
 
     }
 
-    module.component('mediaEdit',
+    module.component('productEdit',
     {
         templateUrl: 'app/product/product-edit.component.html',
         bindings: {

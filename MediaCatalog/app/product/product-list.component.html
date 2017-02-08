@@ -1,56 +1,66 @@
 ﻿<div class="container-fluid" st-table="$ctrl.model" st-pipe="$ctrl.search">
 
-    <button class="btn btn-default" ng-click="$ctrl.create()">New</button>
-    
-    
+    <span>
+        <button class="btn btn-primary" st-submit-search>
+            <i class="glyphicon glyphicon-search"></i> Search
+        </button>
+
+        <button class="btn btn-default" st-reset-search ng-model="$ctrl.searchModel">
+            <i class="glyphicon glyphicon-erase"></i> Clear
+        </button>
+    </span>
+
+    <span class="pull-right">
+        <button class="btn btn-info" ng-click="$ctrl.create()">
+            <i class="glyphicon glyphicon-plus-sign"></i> New
+        </button>
+    </span>
+
+
     <table class="table table-responsive table-condensed">
         <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>ISBN</th>
-            <th>Publisher</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>
-                <button class="btn btn-primary" st-submit-search>
-                    <i class="glyphicon glyphicon-search"></i> Search
-                </button>
-            </td>
-            <td><input type="text" ng-model="$ctrl.searchModel.title" class="form-control" placeholder="Title"/></td>
-            <td><input type="text" ng-model="$ctrl.searchModel.isbn" class="form-control" placeholder="ISBN"/></td>
-            <td><input type="text" ng-model="$ctrl.searchModel.publisher" class="form-control" placeholder="Publisher Name"/></td>
-            <td></td>
-        </tr>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>ISBN</th>
+                <th>Publisher</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="text" ng-model="$ctrl.searchModel.title" class="form-control" placeholder="Title" /></td>
+                <td><input type="text" ng-model="$ctrl.searchModel.isbn" class="form-control" placeholder="ISBN" /></td>
+                <td><input type="text" ng-model="$ctrl.searchModel.publisher" class="form-control" placeholder="Publisher Name" /></td>
+                <td></td>
+            </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="item in $ctrl.media">
-            <td>
-                <button class="btn btn-default" ng-click="$ctrl.edit(item)">Edit</button>
-            </td>
-            <td>{{item.title}}</td>
-            <td>{{item.isbn}}</td>
-            <td>{{item.company}}</td>
-            <td>
-                <button class="btn btn-default" ng-click="$ctrl.showDetails(item.id)">Details</button>
-            </td>
-        </tr>
+            <tr ng-repeat="item in $ctrl.products">
+                <td>
+                    <button class="btn btn-default" ng-click="$ctrl.edit(item)">Edit</button>
+                </td>
+                <td>{{item.title}}</td>
+                <td>{{item.isbn}}</td>
+                <td>{{item.company}}</td>
+                <td>
+                    <button class="btn btn-default" ng-click="$ctrl.showDetails(item.id)">Details</button>
+                </td>
+            </tr>
         </tbody>
         <tfoot>
-        <tr>
-            <td colspan="5">
-                <span uib-pagination total-items="$ctrl.searchModel.totalCount"
-                      ng-model="$ctrl.searchModel.page"
-                      max-size="5"
-                      items-per-page="$ctrl.searchModel.pageSize"
-                      class="pagination-sm"
-                      boundary-link-numbers="true"
-                      ng-change="$ctrl.paged()"
-                      rotate="false">
-                </span>
-            </td>
-        </tr>
+            <tr>
+                <td colspan="5">
+                    <span uib-pagination total-items="$ctrl.searchModel.totalCount"
+                          ng-model="$ctrl.searchModel.page"
+                          max-size="5"
+                          items-per-page="$ctrl.searchModel.pageSize"
+                          class="pagination-sm"
+                          boundary-link-numbers="true"
+                          ng-change="$ctrl.paged()"
+                          rotate="false">
+                    </span>
+                </td>
+            </tr>
         </tfoot>
     </table>
 

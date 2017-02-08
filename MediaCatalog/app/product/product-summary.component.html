@@ -1,19 +1,19 @@
 ﻿
 
 <div class="modal-header">
-    <h3 class="modal-title">{{$ctrl.media.title}}</h3>
+    <h3 class="modal-title">{{$ctrl.product.title}}</h3>
 </div>
 <div class="modal-body">
     <div>
-        <div>ISBN: {{$ctrl.media.isbn}}</div>
-        <div>Summary: {{$ctrl.media.summary}}</div>
+        <div>ISBN: {{$ctrl.product.isbn}}</div>
+        <div>Summary: {{$ctrl.product.summary}}</div>
     </div>
 
     <div>
         <h4>Publisher</h4>
-        <div>{{$ctrl.media.companyName}}</div>
-        <div>{{$ctrl.media.companyWebsiteUrl}}</div>
-        <div>{{$ctrl.media.companyEmail}}</div>
+        <div>{{$ctrl.product.companyName}}</div>
+        <div>{{$ctrl.product.companyWebsiteUrl}}</div>
+        <div>{{$ctrl.product.companyEmail}}</div>
     </div>
     <div>
         <h4>Staff <a href="#" ng-click="$ctrl.addStaffVisible = !$ctrl.addStaffVisible"><i class="glyphicon glyphicon-plus-sign"></i></a></h4>
@@ -58,7 +58,7 @@
 
         <div>
             <ul class="list-unstyled">
-                <li ng-repeat="member in $ctrl.media.staff">
+                <li ng-repeat="member in $ctrl.product.staff">
                     <div>{{ member.role }}</div>
                     <div>{{ member.firstname }} {{ member.lastname }}</div>
                 </li>

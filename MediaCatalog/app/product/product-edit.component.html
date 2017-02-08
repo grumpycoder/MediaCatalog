@@ -1,21 +1,21 @@
 ﻿
 
-<form name="mediaForm" novalidate>
+<form name="productForm" novalidate>
 
     <div class="modal-body">
         <fieldset>
-            <legend>Media</legend>
+            <legend>{{$ctrl.product.title}}</legend>
             <div class="form-group">
                 <label class="control-label">Title</label>
-                <input type="text" class="form-control" ng-model="$ctrl.media.title" />
+                <input type="text" class="form-control" ng-model="$ctrl.product.title" />
             </div>
             <div class="form-group">
                 <label class="control-label">Summary</label>
-                <textarea class="form-control" ng-model="$ctrl.media.summary"></textarea>
+                <textarea class="form-control" ng-model="$ctrl.product.summary"></textarea>
             </div>
             <div class="form-group">
                 <label class="control-label">ISBN</label>
-                <input type="text" class="form-control" ng-model="$ctrl.media.isbn" />
+                <input type="text" class="form-control" ng-model="$ctrl.product.isbn" />
             </div>
         </fieldset>
 
@@ -23,7 +23,7 @@
 
             <legend>Publisher</legend>
             <div class="form-group">
-                <publisher-list id=$ctrl.media.publisherId></publisher-list>
+                <publisher-list id=$ctrl.product.publisherId></publisher-list>
             </div>
         </fieldset>
 

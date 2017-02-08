@@ -1,17 +1,17 @@
 ﻿//product.service.js
 (function () {
     'use strict';
-    var module = angular.module('app.services').factory('ProductService', mediaService);
+    var module = angular.module('app.services').factory('ProductService', serviceController);
 
-    function mediaService($http) {
+    function serviceController($http) {
 
         return {
-            getMedia: getMedia,
-            getAllMedia: getAllMedia,
+            getProduct: getProduct,
+            getAllProducts: getAllProducts,
             save: save
         };
 
-        function getMedia(id) {
+        function getProduct(id) {
             return $http.get('api/product/' + id).then(function (r) {
                 return r.data;
             }).catch(function (err) {
@@ -19,7 +19,7 @@
             });
         }
 
-        function getAllMedia(searchModel) {
+        function getAllProducts(searchModel) {
             return $http.get('api/product', { params: searchModel }).then(function (r) {
                 return r.data;
             }).catch(function (err) {
@@ -27,15 +27,15 @@
             });
         }
 
-        function save(media) {
-            if (media.id) {
-                return $http.put('api/product', media).then(function(r) {
+        function save(product) {
+            if (product.id) {
+                return $http.put('api/product', product).then(function(r) {
                     return r.data;
                 }).catch(function(err) {
                     return err.message;
                 });
             } else {
-                return $http.post('api/product', media).then(function (r) {
+                return $http.post('api/product', product).then(function (r) {
                     return r.data;
                 }).catch(function (err) {
                     return err.message;

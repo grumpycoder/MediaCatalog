@@ -6,15 +6,14 @@
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
-            console.log('summary active');
             if ($ctrl.resolve) {
                 $ctrl.id = $ctrl.resolve.id;
                 $ctrl.asModal = $ctrl.resolve.asModal;
                 $ctrl.addStaffVisible = false;
             }
 
-            service.getMedia($ctrl.id).then(function (r) {
-                $ctrl.media = r;
+            service.getProduct($ctrl.id).then(function (r) {
+                $ctrl.product = r;
             });
         }
 
@@ -27,7 +26,7 @@
         };
     }
 
-    module.component('mediaSummary',
+    module.component('productSummary',
     {
         bindings: {
             id: '<',

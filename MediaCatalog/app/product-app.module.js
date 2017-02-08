@@ -24,4 +24,8 @@
 
     module.value('$routerRootComponent', 'libraryApp');
 
+    module.config(function (stConfig) {
+        stConfig.search.delay = 2000;
+    });
+
 })();

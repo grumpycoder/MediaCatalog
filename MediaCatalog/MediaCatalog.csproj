@@ -175,6 +175,7 @@
   <ItemGroup>
     <Content Include="app\common\publisher-list.component.html" />
     <Content Include="app\directives\directives.modules.js" />
+    <Content Include="app\directives\stTable.directive.js" />
     <Content Include="app\product-app.component.html" />
     <Content Include="app\product-app.module.js" />
     <Content Include="app\product\product-edit.component.html" />
