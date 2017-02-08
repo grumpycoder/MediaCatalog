@@ -14,7 +14,6 @@
                     $ctrl.media = r;
                 });
             }
-            console.log('media edit active', $ctrl);
         }
 
         $ctrl.cancel = function () {

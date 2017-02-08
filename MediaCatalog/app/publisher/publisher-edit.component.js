@@ -5,6 +5,24 @@
     function controller($http) {
         var $ctrl = this;
 
+        $ctrl.$onInit = function() {
+            if ($ctrl.resolve) {
+                $ctrl.id = $ctrl.resolve.id;
+            }
+            if ($ctrl.id) {
+                $http.get('api/publisher/' + $ctrl.id).then(function(r) {
+                    $ctrl.publisher = r.data; 
+                }).catch(function(err) {
+                    console.log('Error retriving publisher', err.message);
+                }).finally(function() {
+
+                });
+            }
+            console.log('$ctrl', $ctrl);
+            
+
+        }
+
         $ctrl.cancel = function () {
             $ctrl.dismiss();
         }
@@ -25,6 +43,7 @@
     module.component('publisherEdit',
     {
         bindings: {
+            id: '<', 
             resolve: '<',
             close: '&',
             dismiss: '&',

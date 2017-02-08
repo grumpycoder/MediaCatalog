@@ -20,6 +20,11 @@ namespace MediaCatalog.Controllers
             return _context.Publishers.ToList();
         }
 
+        public object Get(int id)
+        {
+            return _context.Publishers.FirstOrDefault(p => p.Id == id);
+        }
+
         public object Post(CreateEditPublisherModel model)
         {
             var publisher = new Publisher()
