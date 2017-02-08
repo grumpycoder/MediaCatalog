@@ -31,7 +31,6 @@
         }
 
         $ctrl.edit = function(item) {
-            var selectedMedia = angular.copy(item); 
             $uibModal.open({
                 component: 'mediaEdit',
                 bindings: {
@@ -42,10 +41,8 @@
                 },
                 size: 'lg'
             }).result.then(function (result) {
-                //console.info("I was closed, so do what I need to do myContent's controller now.  Result was->");
                 angular.extend(item, result);
             }, function (reason) {
-                //console.info("I was dimissed, so do what I need to do myContent's controller now.  Reason was->" + reason);
             });
         }
 
