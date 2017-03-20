@@ -6,3 +6,26 @@
     -ms-border-radius: 0 !important;
     border-radius: 0 !important;
 }
+
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+[ng-click], a {
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+th[st-sort] {
+    cursor: pointer;
+}
+
+.st-sort-ascent:before {
+    content: '\25B2';
+}
+
+.st-sort-descent:before {
+    content: '\25BC';
+}
+

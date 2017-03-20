@@ -3,9 +3,12 @@ using MediaCatalog.Domain;
 using MediaCatalog.Helpers;
 using MediaCatalog.Models;
 using System;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Web.Helpers;
 using System.Web.Http;
+using AutoMapper.QueryableExtensions;
 
 namespace MediaCatalog.Controllers
 {
@@ -25,34 +28,30 @@ namespace MediaCatalog.Controllers
             if (pager == null) pager = new ProductSearchModel();
 
             var query = _context.Products;
-
-            var baseQuery = query.Include("Publisher").OrderBy(m => m.Title);
-
-            var totalCount = baseQuery.Count();
-            var totalPages = Math.Ceiling((double)totalCount / PAGE_SIZE);
+            var totalCount = query.Count();
 
             var pred = PredicateBuilder.True<Product>();
             if (!string.IsNullOrWhiteSpace(pager.Title)) pred = pred.And(p => p.Title.Contains(pager.Title));
             if (!string.IsNullOrWhiteSpace(pager.ISBN)) pred = pred.And(p => p.ISBN.Contains(pager.ISBN));
             if (!string.IsNullOrWhiteSpace(pager.Publisher)) pred = pred.And(p => p.Publisher.Name.Contains(pager.Publisher));
 
-            var results = baseQuery.Skip(pager.PageSize * pager.Page ?? 0)
-                       .Where(pred)
-                       .Take(pager.PageSize ?? PAGE_SIZE)
-                       .ToList()
-                       .Select(m => new ProductModel
-                       {
-                           Id = m.Id,
-                           Title = m.Title,
-                           ISBN = m.ISBN,
-                           Company = m.Publisher.Name
-                       });
+            var filteredQuery = query.Where(pred);
+            var pagerCount = filteredQuery.Count();
+
+            var results = filteredQuery.Include("Publisher")
+                            .Order(pager.OrderBy, pager.OrderDirection == "desc" ? SortDirection.Descending : SortDirection.Ascending)
+                            .Skip(pager.PageSize * (pager.Page - 1) ?? 0)
+                            .Take(pager.PageSize ?? PAGE_SIZE)
+                            .ProjectTo<ProductModel>().ToList();
+
+            var totalPages = Math.Ceiling((double)pagerCount / pager.PageSize ?? PAGE_SIZE);
 
             pager.TotalCount = totalCount;
+            pager.FilteredCount = pagerCount;
             pager.TotalPages = totalPages;
             pager.Results = results;
 
-            return pager;
+            return Ok(pager);
 
         }
 
@@ -110,6 +109,17 @@ namespace MediaCatalog.Controllers
                 Company = media.Publisher.Name
             };
             return product;
+        }
+
+        public object Delete(int id)
+        {
+            var product = _context.Products.Find(id);
+            if (product == null) return NotFound();
+
+            _context.Products.Remove(product);
+            _context.SaveChanges();
+
+            return Ok("Deleted product successfully");
         }
 
         //[HttpPost, Route("Staff")]

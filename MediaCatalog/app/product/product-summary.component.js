@@ -36,7 +36,7 @@
             dismiss: '&'
         },
         templateUrl: 'app/product/product-summary.component.html',
-        controller: ['ProductService', controller]
+        controller: ['Product', controller]
     });
 
 }

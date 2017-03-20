@@ -1,33 +1,40 @@
-﻿<div class="container-fluid" st-table="$ctrl.model" st-pipe="$ctrl.search">
-
+﻿
+<div st-table="$ctrl.model" st-pipe="$ctrl.search">
+    <div>
+        <h3 class="modal-title">{{$ctrl.title}}</h3>
+        <small>({{$ctrl.searchModel.filteredCount}} / {{$ctrl.searchModel.totalCount}}) Total Records</small>
+        <span class="pull-right">
+            <small>Page {{$ctrl.searchModel.page}} of {{$ctrl.searchModel.totalPages}}</small>
+        </span>
+    </div>
     <span>
         <button class="btn btn-primary" st-submit-search>
             <i class="glyphicon glyphicon-search"></i> Search
         </button>
 
         <button class="btn btn-default" st-reset-search ng-model="$ctrl.searchModel">
-            <i class="glyphicon glyphicon-erase"></i> Clear
+            <i class="glyphicon glyphicon glyphicon-refresh"></i> Clear
         </button>
     </span>
 
     <span class="pull-right">
-        <button class="btn btn-info" ng-click="$ctrl.create()">
-            <i class="glyphicon glyphicon-plus-sign"></i> New
-        </button>
+        <span>
+            <button class="btn btn-default" ng-click="$ctrl.create()">
+                <i class="glyphicon glyphicon-plus"></i> New
+            </button>
+        </span>
     </span>
 
 
-    <table class="table table-responsive table-condensed">
+    <table class="table table-bordered table-responsive table-hover">
         <thead>
             <tr>
-                <th></th>
-                <th>Title</th>
-                <th>ISBN</th>
-                <th>Publisher</th>
+                <th st-sort="title">Title</th>
+                <th st-sort="isbn">ISBN</th>
+                <th st-sort="publisher">Publisher</th>
                 <th></th>
             </tr>
             <tr>
-                <td></td>
                 <td><input type="text" ng-model="$ctrl.searchModel.title" class="form-control" placeholder="Title" /></td>
                 <td><input type="text" ng-model="$ctrl.searchModel.isbn" class="form-control" placeholder="ISBN" /></td>
                 <td><input type="text" ng-model="$ctrl.searchModel.publisher" class="form-control" placeholder="Publisher Name" /></td>
@@ -37,20 +44,20 @@
         <tbody>
             <tr ng-repeat="item in $ctrl.products">
                 <td>
-                    <button class="btn btn-default" ng-click="$ctrl.edit(item)">Edit</button>
+                    <a ng-click="$ctrl.showDetails(item.id)">{{item.title}}</a> 
                 </td>
-                <td>{{item.title}}</td>
                 <td>{{item.isbn}}</td>
                 <td>{{item.company}}</td>
-                <td>
-                    <button class="btn btn-default" ng-click="$ctrl.showDetails(item.id)">Details</button>
+                <td class="text-nowrap">
+                    <a ng-click="$ctrl.edit(item)">Edit</a> |
+                    <a ng-click="$ctrl.delete(item)">Delete</a>
                 </td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="5">
-                    <span uib-pagination total-items="$ctrl.searchModel.totalCount"
+                <td colspan="4">
+                    <span uib-pagination total-items="$ctrl.searchModel.filteredCount"
                           ng-model="$ctrl.searchModel.page"
                           max-size="5"
                           items-per-page="$ctrl.searchModel.pageSize"

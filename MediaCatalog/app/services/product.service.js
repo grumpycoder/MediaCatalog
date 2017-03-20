@@ -1,13 +1,16 @@
 ﻿//product.service.js
 (function () {
     'use strict';
-    var module = angular.module('app.services').factory('ProductService', serviceController);
+    var module = angular.module('app'); 
+    
+    module.factory('Product', ['$http', serviceController]);
 
     function serviceController($http) {
 
         return {
             getProduct: getProduct,
             getAllProducts: getAllProducts,
+            remove: remove, 
             save: save
         };
 
@@ -25,6 +28,14 @@
             }).catch(function (err) {
                 console.log(err.message);
             });
+        }
+
+        function remove(id) {
+            return $http.delete('api/product/' + id).then(function(r) {
+                return r.data;
+            }).catch(function(err) {
+                console.log(err.message);
+            }); 
         }
 
         function save(product) {

@@ -4,7 +4,7 @@
 
     var module = angular.module('app');
 
-    function controller($uibModal, service) {
+    function controller($modal, product) {
         var $ctrl = this;
         var pageSizeDefault = 10;
         var tableStateRef;
@@ -14,12 +14,15 @@
             pageSize: pageSizeDefault
         };
 
-        $ctrl.$onInit = function () {}
+        $ctrl.$onInit = function () {
+            console.log('product list init');
+            $ctrl.title = 'Product List';
+        }
 
         $ctrl.search = function (tableState) {
             tableStateRef = tableState;
-
-            service.getAllProducts($ctrl.searchModel).then(function (r) {
+            console.log('search');
+            product.getAllProducts($ctrl.searchModel).then(function (r) {
                 $ctrl.products = r.results;
                 $ctrl.searchModel = r;
                 delete $ctrl.searchModel.results;
@@ -30,29 +33,13 @@
             $ctrl.search(tableStateRef);
         }
 
-        $ctrl.edit = function(item) {
-            $uibModal.open({
-                component: 'productEdit',
-                bindings: {
-                    modalInstance: "<"
-                },
-                resolve: {
-                    id: item.id
-                },
-                size: 'lg'
-            }).result.then(function (result) {
-                angular.extend(item, result);
-            }, function (reason) {
-            });
-        }
-
         $ctrl.create = function () {
-            $uibModal.open({
+            $modal.open({
                 component: 'productEdit',
                 bindings: {
                     modalInstance: "<"
                 },
-                size: 'lg'
+                size: 'md'
             }).result.then(function (result) {
                 $ctrl.products.unshift(result);
             }, function (reason) {
@@ -60,8 +47,33 @@
             });
         }
 
+        $ctrl.edit = function(item) {
+            $modal.open({
+                component: 'productEdit',
+                bindings: {
+                    modalInstance: "<"
+                },
+                resolve: {
+                    id: item.id
+                },
+                size: 'md'
+            }).result.then(function (result) {
+                angular.extend(item, result);
+            }, function (reason) {
+            });
+        }
+
+        $ctrl.delete = function (item) {
+
+            console.log('delete', item);
+            product.remove(item.id).then(function(r) {
+                var idx = $ctrl.products.indexOf(item);
+                $ctrl.products.splice(idx, 1);
+            });
+        }   
+        
         $ctrl.showDetails = function (id) {
-            $uibModal.open({
+            $modal.open({
                 component: 'productSummary',
                 bindings: {
                     modalInstance: "<"
@@ -70,7 +82,7 @@
                     id: id,
                     asModal: true
                 },
-                size: 'lg'
+                size: 'md'
             }).result.then(function (result) {
                 console.info("I was closed, so do what I need to do myContent's controller now.  Result was->");
                 console.info(result);
@@ -78,14 +90,13 @@
                 console.info("I was dimissed, so do what I need to do myContent's controller now.  Reason was->" + reason);
             });
         }
-
     }
 
-    module.component('list',
-    {
-        templateUrl: 'app/product/product-list.component.html',
-        controller: ['$uibModal', 'ProductService', controller]
-    });
+    module.component('productList',
+        {
+            templateUrl: 'app/product/product-list.component.html',
+            controller: ['$uibModal', 'Product', controller]
+        });
 
 }
 )();

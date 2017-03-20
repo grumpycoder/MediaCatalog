@@ -6,14 +6,17 @@
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
+            $ctrl.title = 'New Product'; 
             if ($ctrl.resolve) {
                 $ctrl.id = $ctrl.resolve.id;
             }
             if ($ctrl.id) {
                 service.getProduct($ctrl.id).then(function (r) {
                     $ctrl.product = r;
+                    $ctrl.title = r.title; 
                 });
             }
+            
         }
 
         $ctrl.cancel = function () {
@@ -42,7 +45,7 @@
             dismiss: '&',
             modalInstance: '<'
         },
-        controller: ['ProductService', controller]
+        controller: ['Product', controller]
     });
 })();
     

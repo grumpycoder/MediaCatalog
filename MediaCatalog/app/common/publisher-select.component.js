@@ -56,12 +56,12 @@
         }
     }
 
-    module.component('publisherList',
+    module.component('publisherSelect',
     {
         bindings: {
             id: '='
         },
-        templateUrl: 'app/common/publisher-list.component.html',
+        templateUrl: 'app/common/publisher-select.component.html',
         controller: ['$http', '$uibModal', controller]
     });
 
