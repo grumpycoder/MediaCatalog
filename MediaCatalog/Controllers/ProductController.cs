@@ -57,7 +57,9 @@ namespace MediaCatalog.Controllers
 
         public object Get(int id)
         {
-            var product = _context.Products.Include("Staff").FirstOrDefault(p => p.Id == id);
+            var product = _context.Products.Include("Staff")
+                                           .Include("Publisher")
+                                           .ProjectTo<ProductSummaryModel>().FirstOrDefault(p => p.Id == id);
             return product;
         }
 
@@ -122,12 +124,16 @@ namespace MediaCatalog.Controllers
             return Ok("Deleted product successfully");
         }
 
-        //[HttpPost, Route("Staff")]
-        //public object Staff(StaffMember staff)
-        //{
+        [HttpDelete, Route("staff/{id}")]
+        public object DeleteStaff(int id)
+        {
+            var staff = _context.Staff.Find(id);
+            if (staff == null) return NotFound();
 
-        //    return Ok();
-        //}
+            _context.Staff.Remove(staff);
+            _context.SaveChanges();
+            return Ok("Deleted staff");
+        }
 
     }
 }

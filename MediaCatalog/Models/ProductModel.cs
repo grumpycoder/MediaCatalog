@@ -15,7 +15,8 @@ namespace MediaCatalog.Models
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Product, ProductModel>()
-                .ForMember(d => d.Company, opt => opt.MapFrom(s => s.Publisher.Name));
+                .ForMember(d => d.Company, opt => opt.MapFrom(s => s.Publisher.Name))
+                ;
 
         }
     }

@@ -9,18 +9,18 @@
     </div>
     <span>
         <button class="btn btn-primary" st-submit-search>
-            <i class="glyphicon glyphicon-search"></i> Search
+            <i class="fa fa-search"></i> Search
         </button>
 
         <button class="btn btn-default" st-reset-search ng-model="$ctrl.searchModel">
-            <i class="glyphicon glyphicon glyphicon-refresh"></i> Clear
+            <i class="fa fa-undo"></i> Clear
         </button>
     </span>
 
     <span class="pull-right">
         <span>
             <button class="btn btn-default" ng-click="$ctrl.create()">
-                <i class="glyphicon glyphicon-plus"></i> New
+                <i class="fa fa-plus"></i> New
             </button>
         </span>
     </span>
@@ -43,8 +43,8 @@
         </thead>
         <tbody>
             <tr ng-repeat="item in $ctrl.products">
-                <td>
-                    <a ng-click="$ctrl.showDetails(item.id)">{{item.title}}</a> 
+                <td ng-click="$ctrl.showDetails(item.id)">
+                    <a>{{item.title}}</a> 
                 </td>
                 <td>{{item.isbn}}</td>
                 <td>{{item.company}}</td>

@@ -16,18 +16,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("MediaCatalog", null, "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Publishers", "Publishers", "Home")</li>
-                    <li>@Html.ActionLink("Staff", "Staff", "Home")</li>
-                </ul>
+                <a href="/" class="navbar-brand">Media Catalog</a>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container">
         @RenderBody()
         <hr />
         <footer>

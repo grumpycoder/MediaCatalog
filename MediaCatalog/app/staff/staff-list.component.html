@@ -1,0 +1,23 @@
+﻿
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="member in $ctrl.staff">
+            <td><a ng-click="$ctrl.edit(member)">{{ member.firstname }} {{ member.lastname }}</a></td>
+            <td>{{ member.role }}</td>
+            <td>{{ member.email }}</td>
+            <td>{{ member.phone }}</td>
+            <td><a ng-click="$ctrl.delete(member)"> <i class="fa fa-trash-o"></i></a></td>
+        </tr>
+    </tbody>
+</table>
+

@@ -58,6 +58,10 @@
     <Reference Include="Heroic.AutoMapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Heroic.AutoMapper.2.0.0\lib\net45\Heroic.AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="MediaCatalog.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\MediaCatalog.Domain.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.7\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -169,6 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PublisherController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +181,7 @@
     <Compile Include="Helpers\PredicateBuilder.cs" />
     <Compile Include="Models\CreateEditProductModel.cs" />
     <Compile Include="Models\CreateEditPublisherModel.cs" />
+    <Compile Include="Models\ProductSummaryModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ProductSearchModel.cs" />
     <Compile Include="Models\MediaSummaryModel.cs" />
@@ -197,10 +203,15 @@
     <Content Include="app\product\product-summary.component.js" />
     <Content Include="app\services\product.service.js" />
     <Content Include="app\directives\stTable.directive.js" />
+    <Content Include="app\staff\staff-edit.component.html" />
+    <Content Include="app\staff\staff-edit.component.js" />
+    <Content Include="app\staff\staff-list.component.html" />
+    <Content Include="app\staff\staff-list.component.js" />
     <Content Include="css\site.css" />
     <Content Include="css\site.min.css" />
     <Content Include="css\vendor.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -221,8 +232,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Staff.cshtml" />
-    <Content Include="Views\Home\Publishers.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -245,10 +254,6 @@
       <Project>{B179CDA1-5922-4E97-B7D4-1EBF2F15FC00}</Project>
       <Name>MediaCatalog.DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MediaCatalog.Domain\MediaCatalog.Domain.csproj">
-      <Project>{90A5185D-65B6-49FB-AD33-97C7077C4E3E}</Project>
-      <Name>MediaCatalog.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -257,7 +262,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
     <None Include="Properties\PublishProfiles\MediaCatalogWeb - Web Deploy.pubxml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

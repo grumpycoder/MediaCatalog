@@ -17,7 +17,7 @@ var config = {
 
 gulp.task('default', ['vendor:js', 'vendor:css', 'vendor:fonts', 'app:js', 'app:css']);
 
-gulp.task('build-vendor', ['vendor:js', 'vendor:css', 'vendor:fonts']);
+gulp.task('build-vendor', ['vendor:js', 'vendor:css', 'vendor:min-css', 'vendor:fonts']);
 
 gulp.task('build-app', ['app:js', 'app:css']);
 
@@ -73,6 +73,14 @@ gulp.task('vendor:js', function () {
 });
 
 gulp.task('vendor:css', function () {
+    console.log('building vendor styles');
+    return gulp.src($.mainBowerFiles('**/*.css'))
+        .pipe($.print())
+        .pipe($.concat('vendor.css'))
+        .pipe(gulp.dest('css/'));
+});
+
+gulp.task('vendor:min-css', function () {
     console.log('building vendor styles');
     return gulp.src($.mainBowerFiles('**/*.css'))
         .pipe($.print())

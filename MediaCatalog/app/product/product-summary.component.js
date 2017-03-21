@@ -2,7 +2,7 @@
 (function () {
     var module = angular.module('app');
 
-    function controller(service) {
+    function controller($modal, service) {
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
@@ -17,8 +17,22 @@
             });
         }
 
-        $ctrl.createStaff = function() {
-            console.log('add staff modal');
+        $ctrl.showNewStaff = function() {
+            $modal.open({
+                component: 'staffEdit',
+                bindings: {
+                    modalInstance: "<"
+                },
+                resolve: {
+                    productId: $ctrl.id
+                },
+                size: 'md'
+            }).result.then(function (result) {
+                console.info("I was closed, so do what I need to do myContent's controller now.  Result was->");
+                $ctrl.product.staff.unshift(result);
+            }, function (reason) {
+                console.info("I was dimissed, so do what I need to do myContent's controller now.  Reason was->" + reason);
+            });
         }
 
         $ctrl.cancel = function () {
@@ -36,7 +50,7 @@
             dismiss: '&'
         },
         templateUrl: 'app/product/product-summary.component.html',
-        controller: ['Product', controller]
+        controller: ['$uibModal', 'Product', controller]
     });
 
 }
