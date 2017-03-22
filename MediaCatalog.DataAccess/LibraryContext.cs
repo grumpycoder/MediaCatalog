@@ -2,10 +2,11 @@
 using MediaCatalog.Domain;
 using System;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MediaCatalog.DataAccess
 {
-    public class LibraryContext : DbContext
+    public class LibraryContext : IdentityDbContext<ApplicationUser>
     {
 
         public LibraryContext() : base("name=LibraryContext")
@@ -21,8 +22,6 @@ namespace MediaCatalog.DataAccess
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Staff> Staff { get; set; }
-        //public DbSet<Media> Media { get; set; }
-        //public DbSet<StaffMember> StaffMembers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
@@ -43,9 +42,7 @@ namespace MediaCatalog.DataAccess
             builder.Entity<Staff>().Property(x => x.Phone).HasMaxLength(12);
 
             builder.Entity<Staff>().HasMany(e => e.Products).WithMany(e => e.Staff);
-
-
-
+            
             base.OnModelCreating(builder);
         }
     }

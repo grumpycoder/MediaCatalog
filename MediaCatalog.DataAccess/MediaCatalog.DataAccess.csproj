@@ -38,6 +38,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MediaCatalog\Bin\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -67,6 +71,14 @@
     <Compile Include="Migrations\201702061650467_staff.Designer.cs">
       <DependentUpon>201702061650467_staff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703212301588_security.cs" />
+    <Compile Include="Migrations\201703212301588_security.Designer.cs">
+      <DependentUpon>201703212301588_security.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703212322374_security-update.cs" />
+    <Compile Include="Migrations\201703212322374_security-update.Designer.cs">
+      <DependentUpon>201703212322374_security-update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,6 +104,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702061650467_staff.resx">
       <DependentUpon>201702061650467_staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703212301588_security.resx">
+      <DependentUpon>201703212301588_security.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703212322374_security-update.resx">
+      <DependentUpon>201703212322374_security-update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
