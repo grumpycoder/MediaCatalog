@@ -1,110 +1,50 @@
-﻿using System.Configuration;
-using System.Threading.Tasks;
+﻿using System;
+using System.Security.Claims;
 using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-using MediaCatalog.Models;
-using Microsoft.AspNet.Identity;
+using System.Web.Http;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Infrastructure;
 using Microsoft.Owin.Security;
 
 namespace MediaCatalog.Controllers
 {
-    public class AuthController : Controller
+    public class AuthController:ApiController
     {
-        private ApplicationSignInManager _signInManager;
+
         private ApplicationUserManager _userManager;
-
-        public AuthController()
-        {
-        }
-
-        public AuthController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
-
-        public ApplicationSignInManager SignInManager
-        {
-            get { return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>(); }
-            private set { _signInManager = value; }
-        }
-
         public ApplicationUserManager UserManager
         {
-            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
-            private set { _userManager = value; }
-        }
-
-        private IAuthenticationManager AuthenticationManager
-        {
-            get { return HttpContext.GetOwinContext().Authentication; }
-        }
-
-        [AllowAnonymous, HttpGet]
-        public ActionResult Login(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
-        }
-
-        //[HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
-        [HttpPost]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
-        {
-            if (!ModelState.IsValid)
+            get
             {
-                return View(model);
+                return _userManager ?? HttpContext.Current.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
-            var env = ConfigurationManager.AppSettings["Environment"];
-            var user = UserManager.FindByName(model.Username);
-
-            if (user != null)
+            private set
             {
-                switch (env)
-                {
-                    case "Prod":
-                        if (Membership.ValidateUser(model.Username, model.Password))
-                        {
-                            await SignInManager.SignInAsync(user, true, model.RememberMe);
-                            return RedirectToLocal(returnUrl);
-                        }
-                        ModelState.AddModelError("", "Invalid username or password.");
-                        break;
-
-                    default:
-                        await SignInManager.SignInAsync(user, true, model.RememberMe);
-                        return RedirectToLocal(returnUrl);
-                }
-                if (ModelState.IsValid)
-                {
-                    await SignInManager.SignInAsync(user, true, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
-                }
-
+                _userManager = value;
             }
-
-            ModelState.AddModelError("", "You are not authorized.");
-
-            return View(model);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        [ActionName("Authenticate")]
+        [AllowAnonymous]
+        public string Authenticate(string user, string password)
         {
-            AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password))
+                return "failed";
+            var userIdentity = UserManager.FindAsync(user, password).Result;
+            if (userIdentity == null) return "failed";
+
+            var identity = new ClaimsIdentity(Startup.OAuthBearerOptions.AuthenticationType);
+            identity.AddClaim(new Claim(ClaimTypes.Name, user));
+            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, userIdentity.Id));
+            var ticket = new AuthenticationTicket(identity, new AuthenticationProperties());
+            var currentUtc = new SystemClock().UtcNow;
+            ticket.Properties.IssuedUtc = currentUtc;
+            ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromMinutes(30));
+            var accessToken = Startup.OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
+            return accessToken;
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            return RedirectToAction("Index", "Home");
-        }
     }
 }

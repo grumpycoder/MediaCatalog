@@ -22,7 +22,7 @@ namespace MediaCatalog.Controllers
         {
             _context = LibraryContext.Create();
         }
-
+        [Authorize]
         public object Get()
         {
             return Ok();

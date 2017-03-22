@@ -6,12 +6,15 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
 
 namespace MediaCatalog
 {
     public partial class Startup
     {
+        public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
+
         public void ConfigureAuth(IAppBuilder app)
         {
             app.UseCors(CorsOptions.AllowAll);
@@ -20,6 +23,9 @@ namespace MediaCatalog
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+
+            OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
+            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {

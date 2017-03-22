@@ -35,6 +35,9 @@ namespace MediaCatalog
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter("Bearer"));
         }
     }
 }
