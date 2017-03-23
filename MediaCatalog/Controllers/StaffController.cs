@@ -16,7 +16,6 @@ namespace MediaCatalog.Controllers
     public class StaffController : ApiController
     {
         private readonly LibraryContext _context;
-        private const int PAGE_SIZE = 20;
 
         public StaffController()
         {

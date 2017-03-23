@@ -82,7 +82,7 @@ namespace MediaCatalog.Controllers
                 Id = m.Id,
                 Title = m.Title,
                 ISBN = m.ISBN,
-                Company = m.Publisher.Name
+                Publisher = m.Publisher.Name
             }).FirstOrDefault(x => x.Id == product.Id);
 
             return Ok(media);
@@ -109,7 +109,7 @@ namespace MediaCatalog.Controllers
                 Id = media.Id,
                 Title = media.Title,
                 ISBN = media.ISBN,
-                Company = media.Publisher.Name
+                Publisher = media.Publisher.Name
             };
             return product;
         }

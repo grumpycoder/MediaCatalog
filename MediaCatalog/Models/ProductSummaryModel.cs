@@ -12,7 +12,7 @@ namespace MediaCatalog.Models
         public string Title { get; set; }
         public string Summary { get; set; }
         public string ISBN { get; set; }
-        public string Company { get; set; }
+        public string Publisher { get; set; }
         public string Website { get; set; }
         public string Email { get; set; }
 
@@ -21,7 +21,7 @@ namespace MediaCatalog.Models
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Product, ProductSummaryModel>()
-                .ForMember(d => d.Company, opt => opt.MapFrom(s => s.Publisher.Name))
+                .ForMember(d => d.Publisher, opt => opt.MapFrom(s => s.Publisher.Name))
                 .ForMember(d => d.Website, opt => opt.MapFrom(s => s.Publisher.WebsiteUrl))
                 .ForMember(d => d.Email, opt => opt.MapFrom(s => s.Publisher.Email))
                 .ForMember(d => d.Staff, opt => opt.MapFrom(s => s.Staff))

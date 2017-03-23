@@ -226,7 +226,6 @@
     <Compile Include="Models\ProductSummaryModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ProductSearchModel.cs" />
-    <Compile Include="Models\MediaSummaryModel.cs" />
     <Compile Include="Models\PagerModel.cs" />
     <Compile Include="Models\StaffModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
