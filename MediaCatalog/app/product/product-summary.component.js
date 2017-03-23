@@ -17,6 +17,22 @@
             });
         }
 
+        $ctrl.edit = function() {
+            $modal.open({
+                component: 'productEdit',
+                bindings: {
+                    modalInstance: "<"
+                },
+                resolve: {
+                    id: $ctrl.product.id
+                },
+                size: 'md'
+            }).result.then(function (result) {
+                angular.extend($ctrl.product, result);
+            }, function (reason) {
+            });
+        }
+
         $ctrl.showNewStaff = function() {
             $modal.open({
                 component: 'staffEdit',
@@ -36,7 +52,7 @@
         }
 
         $ctrl.cancel = function () {
-            $ctrl.dismiss();
+            $ctrl.modalInstance.close($ctrl.product);
         };
     }
 
@@ -47,7 +63,8 @@
             asModal: '<',
             resolve: '<',
             close: '&',
-            dismiss: '&'
+            dismiss: '&', 
+            modalInstance: '<'
         },
         templateUrl: 'app/product/product-summary.component.html',
         controller: ['$uibModal', 'Product', controller]

@@ -73,20 +73,20 @@
             });
         }   
         
-        $ctrl.showDetails = function (id) {
+        $ctrl.showDetails = function (item) {
             $modal.open({
                 component: 'productSummary',
                 bindings: {
                     modalInstance: "<"
                 },
                 resolve: {
-                    id: id,
+                    id: item.id,
                     asModal: true
                 },
                 size: 'md'
             }).result.then(function (result) {
                 console.info("I was closed, so do what I need to do myContent's controller now.  Result was->");
-                console.info(result);
+                angular.extend(item, result);
             }, function (reason) {
                 console.info("I was dimissed, so do what I need to do myContent's controller now.  Reason was->" + reason);
             });

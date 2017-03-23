@@ -15,6 +15,7 @@ namespace MediaCatalog.Models
         public string Publisher { get; set; }
         public string Website { get; set; }
         public string Email { get; set; }
+        public int PublisherId { get; set; }
 
         public List<Staff> Staff { get; set; }
 
@@ -25,6 +26,7 @@ namespace MediaCatalog.Models
                 .ForMember(d => d.Website, opt => opt.MapFrom(s => s.Publisher.WebsiteUrl))
                 .ForMember(d => d.Email, opt => opt.MapFrom(s => s.Publisher.Email))
                 .ForMember(d => d.Staff, opt => opt.MapFrom(s => s.Staff))
+                .ForMember(d => d.PublisherId, opt => opt.MapFrom(s => s.PublisherId))
                 ;
 
         }

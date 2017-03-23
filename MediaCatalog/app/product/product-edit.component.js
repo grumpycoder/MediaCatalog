@@ -13,7 +13,7 @@
             if ($ctrl.id) {
                 service.getProduct($ctrl.id).then(function (r) {
                     $ctrl.product = r;
-                    $ctrl.title = r.title; 
+                    $ctrl.title = r.title;
                 });
             }
             
@@ -26,10 +26,10 @@
         $ctrl.save = function () {
             return service.save($ctrl.product).then(function (r) {
                 angular.extend($ctrl.product, r);
+                $ctrl.modalInstance.close($ctrl.product);
             }).catch(function (err) {
                 console.log('Error saving product', err.message);
             }).finally(function () {
-                $ctrl.modalInstance.close($ctrl.product);
             });
         }
 
