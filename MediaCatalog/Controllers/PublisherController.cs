@@ -6,6 +6,7 @@ using System.Web.Http;
 
 namespace MediaCatalog.Controllers
 {
+    [Authorize]
     public class PublisherController : ApiController
     {
         private readonly LibraryContext _context;

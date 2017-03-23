@@ -107,7 +107,7 @@ namespace MediaCatalog.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("", "Home");
         }
     }
 }

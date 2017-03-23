@@ -8,10 +8,10 @@
     "angular-component-router": "^0.2.1",
     "angular-smart-table": "^2.1.8",
     "angular-bootstrap": "2.2.0",
-    "lodash": "3.10.1"
+    "lodash": "3.10.1",
+    "ngstorage": "^0.3.11"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "overrides": {
     "bootstrap": {
       "main": [

@@ -12,7 +12,7 @@ using MediaCatalog.Models;
 
 namespace MediaCatalog.Controllers
 {
-    [RoutePrefix("api/staff")]
+    [RoutePrefix("api/staff"), Authorize]
     public class StaffController : ApiController
     {
         private readonly LibraryContext _context;
@@ -22,7 +22,7 @@ namespace MediaCatalog.Controllers
         {
             _context = LibraryContext.Create();
         }
-        [Authorize]
+
         public object Get()
         {
             return Ok();

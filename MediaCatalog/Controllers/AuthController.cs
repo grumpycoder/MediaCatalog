@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Infrastructure;
 using Microsoft.Owin.Security;
+using Newtonsoft.Json;
 
 namespace MediaCatalog.Controllers
 {
-    public class AuthController:ApiController
+    public class AuthController : ApiController
     {
 
         private ApplicationUserManager _userManager;
@@ -24,10 +26,8 @@ namespace MediaCatalog.Controllers
             }
         }
 
-        [HttpPost]
-        [ActionName("Authenticate")]
-        [AllowAnonymous]
-        public string Authenticate(string user, string password)
+        [HttpPost, AllowAnonymous, ActionName("Authenticate")]
+        public object Authenticate(string user, string password)
         {
 
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password))
@@ -42,8 +42,11 @@ namespace MediaCatalog.Controllers
             var currentUtc = new SystemClock().UtcNow;
             ticket.Properties.IssuedUtc = currentUtc;
             ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromMinutes(30));
+
             var accessToken = Startup.OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
+
             return accessToken;
+
         }
 
     }

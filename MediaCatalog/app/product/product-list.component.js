@@ -4,7 +4,7 @@
 
     var module = angular.module('app');
 
-    function controller($modal, product) {
+    function controller($modal, product, user) {
         var $ctrl = this;
         var pageSizeDefault = 10;
         var tableStateRef;
@@ -17,6 +17,7 @@
         $ctrl.$onInit = function () {
             console.log('product list init');
             $ctrl.title = 'Product List';
+            user.getToken();
         }
 
         $ctrl.search = function (tableState) {
@@ -95,7 +96,7 @@
     module.component('productList',
         {
             templateUrl: 'app/product/product-list.component.html',
-            controller: ['$uibModal', 'Product', controller]
+            controller: ['$uibModal', 'Product', 'User', controller]
         });
 
 }

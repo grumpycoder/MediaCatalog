@@ -12,7 +12,7 @@ using AutoMapper.QueryableExtensions;
 
 namespace MediaCatalog.Controllers
 {
-    [RoutePrefix("api/product")]
+    [Authorize, RoutePrefix("api/product")]
     public class ProductController : ApiController
     {
         private readonly LibraryContext _context;
@@ -55,6 +55,7 @@ namespace MediaCatalog.Controllers
 
         }
 
+        [Authorize]
         public object Get(int id)
         {
             var product = _context.Products.Include("Staff")

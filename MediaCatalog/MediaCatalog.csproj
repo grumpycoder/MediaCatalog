@@ -244,6 +244,7 @@
     <Content Include="app\product\product-list.component.html" />
     <Content Include="app\product\product-summary.component.html" />
     <Content Include="app\product\product-summary.component.js" />
+    <Content Include="app\services\auth.service.js" />
     <Content Include="app\services\product.service.js" />
     <Content Include="app\directives\stTable.directive.js" />
     <Content Include="app\staff\staff-edit.component.html" />
