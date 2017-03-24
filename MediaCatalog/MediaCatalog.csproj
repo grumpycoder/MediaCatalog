@@ -310,6 +310,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
+    <None Include="Properties\PublishProfiles\MediaCatalogApp - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MediaCatalogWeb - Web Deploy.pubxml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
