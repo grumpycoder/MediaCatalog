@@ -9,7 +9,8 @@
     "angular-smart-table": "^2.1.8",
     "angular-bootstrap": "2.2.0",
     "lodash": "3.10.1",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "angular-confirm": "angular1-confirm#^1.1.0"
   },
   "devDependencies": {},
   "overrides": {

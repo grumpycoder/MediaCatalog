@@ -234,6 +234,7 @@
   <ItemGroup>
     <Content Include="app\app.module.js" />
     <Content Include="app\common\components.module.js" />
+    <Content Include="app\common\confrmation-modal.component.js" />
     <Content Include="app\common\publisher-select.component.html" />
     <Content Include="app\common\publisher-select.component.js" />
     <Content Include="app\directives\directives.modules.js" />

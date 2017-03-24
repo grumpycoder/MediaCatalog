@@ -4,7 +4,7 @@
 
     var module = angular.module('app');
 
-    function controller($modal, product, user) {
+    function controller($modal, $ngConfirm, product, user) {
         var $ctrl = this;
         var pageSizeDefault = 10;
         var tableStateRef;
@@ -48,7 +48,7 @@
             });
         }
 
-        $ctrl.edit = function(item) {
+        $ctrl.edit = function (item) {
             $modal.open({
                 component: 'productEdit',
                 bindings: {
@@ -65,14 +65,29 @@
         }
 
         $ctrl.delete = function (item) {
-
-            console.log('delete', item);
-            product.remove(item.id).then(function(r) {
-                var idx = $ctrl.products.indexOf(item);
-                $ctrl.products.splice(idx, 1);
+            $ngConfirm({
+                title: 'Delete',
+                content: 'Are you sure you want to delete <br /><strong>' + item.title + '</strong>?',
+                type: 'red',
+                buttons: {
+                    yes: {
+                        keys: ['y'],
+                        action: function (scope, button) {
+                            product.remove(item.id).then(function (r) {
+                                var idx = $ctrl.products.indexOf(item);
+                                $ctrl.products.splice(idx, 1);
+                            });
+                        }
+                    },
+                    no: {
+                        keys: ['N'],
+                        action: function (scope, button) {
+                        }
+                    }
+                }
             });
-        }   
-        
+        }
+
         $ctrl.showDetails = function (item) {
             $modal.open({
                 component: 'productSummary',
@@ -96,7 +111,7 @@
     module.component('productList',
         {
             templateUrl: 'app/product/product-list.component.html',
-            controller: ['$uibModal', 'Product', 'User', controller]
+            controller: ['$uibModal', '$ngConfirm', 'Product', 'User', controller]
         });
 
 }

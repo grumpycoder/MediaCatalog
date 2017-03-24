@@ -8,7 +8,8 @@
             'app.directives',
             'shared.components',
             'ui.bootstrap',
-            'smart-table'
+            'smart-table',
+            'cp.ngConfirm'
         ]).config(['$localStorageProvider', '$httpProvider',
             function ($localStorageProvider, $httpProvider) {
                 $localStorageProvider.setKeyPrefix('mc-');
