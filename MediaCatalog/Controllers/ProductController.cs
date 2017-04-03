@@ -12,7 +12,7 @@ using AutoMapper.QueryableExtensions;
 
 namespace MediaCatalog.Controllers
 {
-    [Authorize, RoutePrefix("api/product")]
+    [RoutePrefix("api/product")]
     public class ProductController : ApiController
     {
         private readonly LibraryContext _context;
