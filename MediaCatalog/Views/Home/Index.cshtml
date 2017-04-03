@@ -1,7 +1,55 @@
-﻿@{
+﻿@model IEnumerable<System.Security.Claims.Claim>
+
+@{
     ViewBag.Title = "Product List";
 }
 
+<h4>User Info:</h4>
+@foreach (var claim in Model)
+{
+    <div>
+        <p><strong>@claim.Type</strong></p>
+        <p>
+            @claim.Value
+        </p>
+    </div>
+}
+
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <tr>
+        <th class="claim-type claim-data claim-head">Claim Type</th>
+        <th class="claim-data claim-head">Claim Value</th>
+    </tr>
+
+    <tr>
+        <td class="claim-type claim-data">Name</td>
+        <td class="claim-data">@ViewBag.Name</td>
+    </tr>
+    <tr>
+        <td class="claim-type claim-data">Object Id</td>
+        <td class="claim-data">@ViewBag.ObjectId</td>
+    </tr>
+    <tr>
+        <td class="claim-type claim-data">Given Name</td>
+        <td class="claim-data">@ViewBag.GivenName</td>
+    </tr>
+    <tr>
+        <td class="claim-type claim-data">Surname</td>
+        <td class="claim-data">@ViewBag.Surname</td>
+    </tr>
+    <tr>
+        <td class="claim-type claim-data">UPN</td>
+        <td class="claim-data">@ViewBag.UPN</td>
+    </tr>
+    <tr>
+        <td class="claim-type claim-data">Access_Token</td>
+        <td class="claim-data">@ViewBag.Access_Token</td>
+    </tr>
+    <tr>
+        <td class="claim-type claim-data">IdToken</td>
+        <td class="claim-data">@ViewBag.IdToken</td>
+    </tr>
+</table>
 
 <div ng-app="app">
     <product-list></product-list>

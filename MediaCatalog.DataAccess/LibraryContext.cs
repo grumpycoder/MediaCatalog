@@ -22,6 +22,7 @@ namespace MediaCatalog.DataAccess
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Staff> Staff { get; set; }
+        public DbSet<UserTokenCache> UserTokenCacheList { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
@@ -42,7 +43,7 @@ namespace MediaCatalog.DataAccess
             builder.Entity<Staff>().Property(x => x.Phone).HasMaxLength(12);
 
             builder.Entity<Staff>().HasMany(e => e.Products).WithMany(e => e.Staff);
-            
+
             base.OnModelCreating(builder);
         }
     }
