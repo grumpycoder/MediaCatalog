@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaCatalog", "MediaCatalog\MediaCatalog.csproj", "{18257DCB-0EEF-48E0-AA22-2D9247581DB2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{90A5185D-65B6-49FB-AD33-97C7077C4E3E} = {90A5185D-65B6-49FB-AD33-97C7077C4E3E}
+		{B179CDA1-5922-4E97-B7D4-1EBF2F15FC00} = {B179CDA1-5922-4E97-B7D4-1EBF2F15FC00}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaCatalog.Domain", "MediaCatalog.Domain\MediaCatalog.Domain.csproj", "{90A5185D-65B6-49FB-AD33-97C7077C4E3E}"
 EndProject
