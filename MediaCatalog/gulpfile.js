@@ -12,7 +12,7 @@ var config = {
     //Include all js files but exclude any min.js files
     //js: ['app/**/*.js', '!app/**/*.min.js', '!app/**/staff-select.component.js'],
     js: ['app/**/*.js', '!app/**/*.min.js'],
-    css: ['css/**/*.css', '!**/*.min.css']
+    css: ['css/**/*.css', '!**/*.min.css', '!css/**/vendor*.css']
 }
 
 gulp.task('default', ['vendor:js', 'vendor:css', 'vendor:fonts', 'app:js', 'app:css']);

@@ -4,7 +4,7 @@
 
     var module = angular.module('app');
 
-    function controller($modal, $ngConfirm, product) {
+    function controller($modal, $ngConfirm, toastr, product) {
         var $ctrl = this;
         var pageSizeDefault = 10;
         var tableStateRef;
@@ -17,15 +17,21 @@
         $ctrl.$onInit = function () {
             console.log('product list init');
             $ctrl.title = 'Product List';
+            $ctrl.loading = true;
         }
 
         $ctrl.search = function (tableState) {
+            $ctrl.loading = true;
             tableStateRef = tableState;
             console.log('search');
             product.getAllProducts($ctrl.searchModel).then(function (r) {
                 $ctrl.products = r.results;
                 $ctrl.searchModel = r;
                 delete $ctrl.searchModel.results;
+                $ctrl.loading = false;
+            }).catch(function (err) {
+                $ctrl.loading = false;
+            }).finally(function () {
             });
         }
 
@@ -42,6 +48,7 @@
                 size: 'md'
             }).result.then(function (result) {
                 $ctrl.products.unshift(result);
+                toastr.info('Created ' + result.title);
             }, function (reason) {
                 console.info("I was dimissed, so do what I need to do myContent's controller now.  Reason was->" + reason);
             });
@@ -59,6 +66,7 @@
                 size: 'md'
             }).result.then(function (result) {
                 angular.extend(item, result);
+                toastr.info('Saved ' + result.title);
             }, function (reason) {
             });
         }
@@ -75,6 +83,7 @@
                             product.remove(item.id).then(function (r) {
                                 var idx = $ctrl.products.indexOf(item);
                                 $ctrl.products.splice(idx, 1);
+                                toastr.warning('Deleted ' + item.title);
                             });
                         }
                     },
@@ -110,7 +119,7 @@
     module.component('productList',
         {
             templateUrl: 'app/product/product-list.component.html',
-            controller: ['$uibModal', '$ngConfirm', 'Product', controller]
+            controller: ['$uibModal', '$ngConfirm', 'toastr', 'Product', controller]
         });
 
 }

@@ -351,8 +351,6 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <None Include="Properties\PublishProfiles\MediaCatalog - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\MediaCatalog20170404034301 - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\MediaCatalogApp - Web Deploy.pubxml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\SignOutCallback.cshtml" />
