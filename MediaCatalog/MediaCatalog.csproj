@@ -58,6 +58,10 @@
     <Reference Include="Heroic.AutoMapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Heroic.AutoMapper.2.0.0\lib\net45\Heroic.AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="MediaCatalog.DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\MediaCatalog.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="MediaCatalog.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Bin\MediaCatalog.Domain.dll</HintPath>
@@ -286,7 +290,6 @@
     <Content Include="app\product\product-list.component.html" />
     <Content Include="app\product\product-summary.component.html" />
     <Content Include="app\product\product-summary.component.js" />
-    <Content Include="app\services\auth.service.js" />
     <Content Include="app\services\product.service.js" />
     <Content Include="app\directives\stTable.directive.js" />
     <Content Include="app\staff\staff-edit.component.html" />
@@ -307,6 +310,7 @@
     <Content Include="gulpfile.js" />
     <Content Include="js\app.min.js" />
     <Content Include="js\vendor.min.js" />
+    <Content Include="robots.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -336,12 +340,6 @@
     <Content Include="package.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MediaCatalog.DataAccess\MediaCatalog.DataAccess.csproj">
-      <Project>{B179CDA1-5922-4E97-B7D4-1EBF2F15FC00}</Project>
-      <Name>MediaCatalog.DataAccess</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -352,8 +350,9 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
+    <None Include="Properties\PublishProfiles\MediaCatalog - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\MediaCatalog20170404034301 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MediaCatalogApp - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\MediaCatalogWeb - Web Deploy.pubxml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\SignOutCallback.cshtml" />

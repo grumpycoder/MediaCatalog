@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Infrastructure;
 using Microsoft.Owin.Security;
-using Newtonsoft.Json;
 
 namespace MediaCatalog.Controllers
 {

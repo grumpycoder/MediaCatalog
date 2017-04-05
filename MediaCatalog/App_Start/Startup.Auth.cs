@@ -46,17 +46,33 @@ namespace MediaCatalog
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
+            app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+
+            app.UseOpenIdConnectAuthentication(
+                new OpenIdConnectAuthenticationOptions
+                {
+                    ClientId = clientId,
+                    Authority = Authority,
+                    PostLogoutRedirectUri = postLogoutRedirectUri
+                });
+            app.UseWindowsAzureActiveDirectoryBearerAuthentication(
+                new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+                {
+                    Audience = "https://developertenant.onmicrosoft.com/WebUXplusAPI",
+                    Tenant = "developertenant.onmicrosoft.com",
+                    AuthenticationType = "OAuth2Bearer",
+                });
+
 
             //OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
             //app.UseOAuthBearerAuthentication(OAuthBearerOptions);
 
-            //var tenant = ConfigurationManager.AppSettings["ida:Tenant"];
-            //var audience = ConfigurationManager.AppSettings["ida:Audience"]; 
-
             //app.UseWindowsAzureActiveDirectoryBearerAuthentication(new WindowsAzureActiveDirectoryBearerAuthenticationOptions
             //{
-            //    Audience = ConfigurationManager.AppSettings["ida:Audience"],
-            //    Tenant = ConfigurationManager.AppSettings["ida:Tenant"] 
+            //    Audience = clientId,
+            //    Tenant = tenantId
 
             //});
 
@@ -82,9 +98,9 @@ namespace MediaCatalog
             //    }
             //});
 
-            app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
+            //app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions());
 
             //app.UseWindowsAzureActiveDirectoryBearerAuthentication(new WindowsAzureActiveDirectoryBearerAuthenticationOptions
             //{
@@ -94,64 +110,64 @@ namespace MediaCatalog
             //});
 
 
-            app.UseOpenIdConnectAuthentication(
-               new OpenIdConnectAuthenticationOptions
-               {
-                   ClientId = clientId,
-                   Authority = Authority,
+            //app.UseOpenIdConnectAuthentication(
+            //   new OpenIdConnectAuthenticationOptions
+            //   {
+            //       ClientId = clientId,
+            //       Authority = Authority,
 
-                   PostLogoutRedirectUri = postLogoutRedirectUri,
+            //       PostLogoutRedirectUri = postLogoutRedirectUri,
 
-                   Notifications = new OpenIdConnectAuthenticationNotifications()
-                   {
-                       // If there is a code in the OpenID Connect response, redeem it for an access token and refresh token, and store those away.
-                       AuthorizationCodeReceived = (context) =>
-                       {
-                           var code = context.Code;
-                           ClientCredential credential = new ClientCredential(clientId, appKey);
-                           string signedInUserId = context.AuthenticationTicket.Identity.FindFirst(ClaimTypes.NameIdentifier).Value;
-                           AuthenticationContext authContext = new AuthenticationContext(Authority, new ADALTokenCache(signedInUserId));
-                           AuthenticationResult result = authContext.AcquireTokenByAuthorizationCode(
-                            code, new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Path)), credential, graphResourceId);
+            //       Notifications = new OpenIdConnectAuthenticationNotifications()
+            //       {
+            //           // If there is a code in the OpenID Connect response, redeem it for an access token and refresh token, and store those away.
+            //           AuthorizationCodeReceived = (context) =>
+            //           {
+            //               var code = context.Code;
+            //               ClientCredential credential = new ClientCredential(clientId, appKey);
+            //               string signedInUserId = context.AuthenticationTicket.Identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //               AuthenticationContext authContext = new AuthenticationContext(Authority, new ADALTokenCache(signedInUserId));
+            //               AuthenticationResult result = authContext.AcquireTokenByAuthorizationCode(
+            //                code, new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Path)), credential, graphResourceId);
 
-                           var identity = context.AuthenticationTicket.Identity;
-                           identity.AddClaim(new Claim("id_token", result.IdToken));
+            //               var identity = context.AuthenticationTicket.Identity;
+            //               identity.AddClaim(new Claim("id_token", result.IdToken));
 
-                           identity.AddClaim(new Claim("access_token", result.AccessToken));
+            //               identity.AddClaim(new Claim("access_token", result.AccessToken));
 
-                           context.AuthenticationTicket = new AuthenticationTicket(identity, context.AuthenticationTicket.Properties);
+            //               context.AuthenticationTicket = new AuthenticationTicket(identity, context.AuthenticationTicket.Properties);
 
-                           return Task.FromResult(0);
-                       },
-                       SecurityTokenValidated = (context) =>
-                       {
-                           //var identity = context.AuthenticationTicket.Identity; 
-                           //identity.AddClaim(new Claim("id_token", context.ProtocolMessage.IdToken));
+            //               return Task.FromResult(0);
+            //           },
+            //           SecurityTokenValidated = (context) =>
+            //           {
+            //               //var identity = context.AuthenticationTicket.Identity; 
+            //               //identity.AddClaim(new Claim("id_token", context.ProtocolMessage.IdToken));
 
-                           //identity.AddClaim(new Claim("access_token", context.ProtocolMessage.AccessToken));
+            //               //identity.AddClaim(new Claim("access_token", context.ProtocolMessage.AccessToken));
 
-                           //context.AuthenticationTicket= new AuthenticationTicket(identity, context.AuthenticationTicket.Properties);
+            //               //context.AuthenticationTicket= new AuthenticationTicket(identity, context.AuthenticationTicket.Properties);
 
-                           return Task.FromResult(0);
-                       },
-                       AuthenticationFailed = (context) =>
-                       {
-                           //this section added to handle scenario where user logs in, but cancels consenting to rights to read directory profile
-                           string appBaseUrl = context.Request.Scheme + "://" + context.Request.Host + context.Request.PathBase;
+            //               return Task.FromResult(0);
+            //           },
+            //           AuthenticationFailed = (context) =>
+            //           {
+            //               //this section added to handle scenario where user logs in, but cancels consenting to rights to read directory profile
+            //               string appBaseUrl = context.Request.Scheme + "://" + context.Request.Host + context.Request.PathBase;
 
-                           context.ProtocolMessage.RedirectUri = appBaseUrl + "/";
+            //               context.ProtocolMessage.RedirectUri = appBaseUrl + "/";
 
-                           //this is where the magic happens
+            //               //this is where the magic happens
 
-                           context.HandleResponse();
+            //               context.HandleResponse();
 
-                           context.Response.Redirect(context.ProtocolMessage.RedirectUri);
+            //               context.Response.Redirect(context.ProtocolMessage.RedirectUri);
 
-                           return Task.FromResult(0);
+            //               return Task.FromResult(0);
 
-                       }
-                   }
-               });
+            //           }
+            //       }
+            //   });
 
 
         }

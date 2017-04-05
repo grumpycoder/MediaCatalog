@@ -12,7 +12,9 @@ using MediaCatalog.Models;
 
 namespace MediaCatalog.Controllers
 {
-    [RoutePrefix("api/staff"), Authorize]
+    [RoutePrefix("api/staff")]
+    [HostAuthentication("OAuth2Bearer")]
+    [Authorize]
     public class StaffController : ApiController
     {
         private readonly LibraryContext _context;

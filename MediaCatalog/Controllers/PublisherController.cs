@@ -6,6 +6,7 @@ using System.Web.Http;
 
 namespace MediaCatalog.Controllers
 {
+    [HostAuthentication("OAuth2Bearer")]
     [Authorize]
     public class PublisherController : ApiController
     {

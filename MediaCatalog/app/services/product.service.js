@@ -24,7 +24,6 @@
 
         function getAllProducts(searchModel) {
             return $http.get('api/product', { params: searchModel }).then(function (r) {
-                //console.log('products', r.data);
                 return r.data;
             }).catch(function (err) {
                 console.log(err.message);

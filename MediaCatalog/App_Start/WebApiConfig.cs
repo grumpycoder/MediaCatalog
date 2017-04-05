@@ -36,8 +36,8 @@ namespace MediaCatalog
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter("Bearer"));
+            //config.SuppressDefaultHostAuthentication();
+            //config.Filters.Add(new HostAuthenticationFilter("Bearer"));
         }
     }
 }

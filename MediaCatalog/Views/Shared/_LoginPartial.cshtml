@@ -1,35 +1,20 @@
-﻿@using Microsoft.AspNet.Identity
+﻿
 @if (Request.IsAuthenticated)
 {
-    @*using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-        {
-        @Html.AntiForgeryToken()*@
-
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @*<span class="navbar-text">Hello @User.Identity.GetUserName()!</span>*@
-            <span class="navbar-text">Hello @ViewBag.GivenName!</span>
+            <a>Hello @ViewBag.GivenName!</a>
         </li>
         <li>
             @Html.ActionLink("Sign out", "SignOut", "Account")
-            @*<a href="javascript:logoff(); document.getElementById('logoutForm').submit()">Log off</a>*@
         </li>
     </ul>
-    //}
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @*@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })*@
-
             @Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-
         </li>
     </ul>
 }
-<script>
-    function logoff() {
-        localStorage.removeItem('mc-currentUser');
-    }
-</script>

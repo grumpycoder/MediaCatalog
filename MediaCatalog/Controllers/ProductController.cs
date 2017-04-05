@@ -1,5 +1,4 @@
-﻿using MediaCatalog.DataAccess;
-using MediaCatalog.Domain;
+﻿using MediaCatalog.Domain;
 using MediaCatalog.Helpers;
 using MediaCatalog.Models;
 using System;
@@ -9,10 +8,13 @@ using System.Linq;
 using System.Web.Helpers;
 using System.Web.Http;
 using AutoMapper.QueryableExtensions;
+using MediaCatalog.DataAccess;
 
 namespace MediaCatalog.Controllers
 {
     [RoutePrefix("api/product")]
+    [HostAuthentication("OAuth2Bearer")]
+    [Authorize]
     public class ProductController : ApiController
     {
         private readonly LibraryContext _context;
@@ -55,7 +57,6 @@ namespace MediaCatalog.Controllers
 
         }
 
-        [Authorize]
         public object Get(int id)
         {
             var product = _context.Products.Include("Staff")

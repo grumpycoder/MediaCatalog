@@ -4,7 +4,7 @@
 
     var module = angular.module('app');
 
-    function controller($modal, $ngConfirm, product, user, adalService) {
+    function controller($modal, $ngConfirm, product) {
         var $ctrl = this;
         var pageSizeDefault = 10;
         var tableStateRef;
@@ -17,8 +17,6 @@
         $ctrl.$onInit = function () {
             console.log('product list init');
             $ctrl.title = 'Product List';
-            //adalService.login();
-            user.getToken();
         }
 
         $ctrl.search = function (tableState) {
@@ -112,7 +110,7 @@
     module.component('productList',
         {
             templateUrl: 'app/product/product-list.component.html',
-            controller: ['$uibModal', '$ngConfirm', 'Product', 'User', 'adalAuthenticationService', controller]
+            controller: ['$uibModal', '$ngConfirm', 'Product', controller]
         });
 
 }
