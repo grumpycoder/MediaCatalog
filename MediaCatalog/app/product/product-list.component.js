@@ -16,7 +16,7 @@
 
         $ctrl.$onInit = function () {
             console.log('product list init');
-            $ctrl.title = 'Product List';
+            $ctrl.title = 'Media List';
             $ctrl.loading = true;
         }
 
