@@ -1,8 +1,35 @@
 {
   "name": "asp.net",
   "private": true,
-  "dependencies": {},
-  "devDependencies": {
-    "bootstrap": "^3.3.7"
+  "dependencies": {
+    "bootswatch-dist": "3.3.0-simplex",
+    "font-awesome-bower": "~4.5.0",
+    "angular": "^1.5.3",
+    "angular-component-router": "^0.2.1",
+    "angular-smart-table": "^2.1.8",
+    "angular-bootstrap": "2.2.0",
+    "lodash": "3.10.1",
+    "ngstorage": "^0.3.11",
+    "angular-toastr": "^2.1.1",
+    "angular-confirm": "angular1-confirm#^1.1.0",
+    "angular-treasure-overlay-spinner": "^1.1.0",
+    "angular-animate": "^1.6.4"
+  },
+  "devDependencies": {},
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js",
+        "dist/fonts/glyphicons-halflings-regular.eot",
+        "dist/fonts/glyphicons-halflings-regular.svg",
+        "dist/fonts/glyphicons-halflings-regular.ttf",
+        "dist/fonts/glyphicons-halflings-regular.woff",
+        "dist/fonts/glyphicons-halflings-regular.woff2"
+      ]
+    }
+  },
+  "resolutions": {
+    "angular": "^1.0.0"
   }
 }

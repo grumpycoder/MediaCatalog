@@ -1,0 +1,41 @@
+﻿
+
+<!--<div class="col-lg-12">-->
+    <div class="input-group">
+        <select class="form-control" ng-model="$ctrl.id" ng-options="item.id as item.name for item in $ctrl.publishers"></select>
+        <!--<select class="form-control" ng-model="$ctrl.selectedItem" ng-options="item.id as item.name for item in $ctrl.publishers"></select>-->
+        <div class="input-group-btn">
+            
+            <div class="btn-group" uib-dropdown is-open="status.isopen">
+                <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                    Actions <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                    <li role="menuitem"><a href="#" ng-click="$ctrl.create()"><i class="fa fa-plus-square-o"></i> New</a></li>
+                    <li role="menuitem"><a href="#" ng-click="$ctrl.edit($ctrl.selectedItem)"><i class="fa fa-pencil"></i> Edit</a></li>
+                </ul>
+            </div>
+
+            <!--<button class="btn btn-default" ng-click="$ctrl.create()"
+                        uib-popover="Create a new publisher" popover-trigger="'mouseenter'" popover-placement="left">
+                <i class="glyphicon glyphicon-plus-sign"></i>
+            </button>-->
+        </div>
+    </div><!-- /input-group -->
+<!--</div>--><!-- /.col-lg-6 -->
+
+
+
+<!--<div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-default btn-sm" ng-click="$ctrl.create()" 
+                    uib-popover="Create a new publisher" popover-trigger="'mouseenter'" popover-placement="right">
+                <i class="glyphicon glyphicon-plus-sign"></i>
+            </button>
+        </div>
+
+        <div class="col-sm-12">
+            <select class="form-control" ng-model="$ctrl.id" ng-options="item.id as item.name for item in $ctrl.publishers"></select>
+        </div>
+
+    </div>-->

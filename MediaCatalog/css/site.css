@@ -1,0 +1,55 @@
+﻿body {
+    margin-top: 50px;
+}
+
+* {
+    -ms-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+[ng-click], a {
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+th[st-sort] {
+    cursor: pointer;
+}
+
+.st-sort-ascent:before {
+    content: '\25B2';
+}
+
+.st-sort-descent:before {
+    content: '\25BC';
+}
+
+.title {
+    font-size: 1.3em;
+    padding: 5px;
+}
+/*.panel-body > .list-group {
+    margin-bottom: 0;
+}
+
+    .panel-body > .list-group .list-group-item {
+        border-width: 0;
+    }
+
+        .panel-body > .list-group .list-group-item:first-child {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+        }
+
+        .panel-body > .list-group .list-group-item:last-child {
+            border-bottom: 0;
+        }
+
+.panel-heading + .list-group .list-group-item:first-child {
+    border-top-width: 0;
+}*/
