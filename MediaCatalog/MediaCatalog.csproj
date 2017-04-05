@@ -311,6 +311,7 @@
     <Content Include="js\app.min.js" />
     <Content Include="js\vendor.min.js" />
     <Content Include="robots.txt" />
+    <Content Include="verion.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
