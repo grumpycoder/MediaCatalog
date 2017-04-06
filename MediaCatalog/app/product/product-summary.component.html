@@ -4,39 +4,42 @@
     <h3 class="modal-title">{{$ctrl.product.title}}</h3>
 </div>
 <div class="modal-body">
-    <fieldset>
-        <dl>
-            <dt>ISBN</dt>
-            <dd>{{ $ctrl.product.isbn }}</dd>
-            <dt>Summary</dt>
-            <dd>{{ $ctrl.product.summary || 'No Summary Available' }}</dd>
-        </dl>
+    <treasure-overlay-spinner active='$ctrl.loading'>
+        <fieldset>
+            <dl>
+                <dt>ISBN</dt>
+                <dd>{{ $ctrl.product.isbn }}</dd>
+                <dt>Summary</dt>
+                <dd>{{ $ctrl.product.summary || 'No Summary Available' }}</dd>
+            </dl>
 
-    </fieldset>
+        </fieldset>
 
-    <fieldset>
-        <legend>Publisher</legend>
-  
-                <dl>
-                    <dt>Name</dt>
-                    <dd>{{ $ctrl.product.publisher }}</dd>
-                    <dt>Website</dt>
-                    <dd>{{ $ctrl.product.website || 'No Website Available'  }}</dd>
-                    <dt>Email</dt>
-                    <dd>{{ $ctrl.product.email || 'No Email Available' }}</dd>
-                </dl>
-    </fieldset>
+        <fieldset>
+            <legend>Publisher</legend>
 
-    <fieldset>
-        
-        <legend>Staff 
-            <span class="pull-right">
-                <a href="#" ng-click="$ctrl.showNewStaff()"><i class="fa fa-plus-square-o"></i></a>
-            </span>
-        </legend>
-        <staff-list staff="$ctrl.product.staff"></staff-list>
+            <dl>
+                <dt>Name</dt>
+                <dd>{{ $ctrl.product.publisher }}</dd>
+                <dt>Website</dt>
+                <dd>{{ $ctrl.product.website || 'No Website Available' }}</dd>
+                <dt>Email</dt>
+                <dd>{{ $ctrl.product.email || 'No Email Available' }}</dd>
+            </dl>
+        </fieldset>
 
-    </fieldset>
+        <fieldset>
+
+            <legend>
+                Staff
+                <span class="pull-right">
+                    <a href="#" ng-click="$ctrl.showNewStaff()"><i class="fa fa-plus-square-o"></i></a>
+                </span>
+            </legend>
+            <staff-list staff="$ctrl.product.staff"></staff-list>
+
+        </fieldset>
+    </treasure-overlay-spinner>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" ng-click="$ctrl.edit()">Edit</button>

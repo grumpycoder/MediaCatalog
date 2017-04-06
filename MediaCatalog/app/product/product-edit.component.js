@@ -6,7 +6,7 @@
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
-            $ctrl.title = 'New Product'; 
+            $ctrl.title = 'New Product';
             if ($ctrl.resolve) {
                 $ctrl.id = $ctrl.resolve.id;
             }
@@ -16,7 +16,7 @@
                     $ctrl.title = r.title;
                 });
             }
-            
+
         }
 
         $ctrl.cancel = function () {
@@ -36,16 +36,15 @@
     }
 
     module.component('productEdit',
-    {
-        templateUrl: 'app/product/product-edit.component.html',
-        bindings: {
-            id: '<',
-            resolve: '<',
-            close: '&',
-            dismiss: '&',
-            modalInstance: '<'
-        },
-        controller: ['Product', controller]
-    });
+        {
+            templateUrl: 'app/product/product-edit.component.html',
+            bindings: {
+                id: '<',
+                resolve: '<',
+                close: '&',
+                dismiss: '&',
+                modalInstance: '<'
+            },
+            controller: ['Product', controller]
+        });
 })();
-    

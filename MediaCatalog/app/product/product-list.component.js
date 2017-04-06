@@ -11,12 +11,15 @@
 
         $ctrl.searchModel = {
             page: 1,
-            pageSize: pageSizeDefault
+            pageSize: pageSizeDefault, 
+            filteredCount: 0, 
+            totalCount: 0, 
+            totalPages: 0
         };
 
         $ctrl.$onInit = function () {
             console.log('product list init');
-            $ctrl.title = 'Product List';
+            $ctrl.title = 'Media Library';
             $ctrl.loading = true;
         }
 
