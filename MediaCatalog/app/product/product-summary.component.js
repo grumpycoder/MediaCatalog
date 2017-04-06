@@ -6,6 +6,7 @@
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
+            $ctrl.loading = true; 
             if ($ctrl.resolve) {
                 $ctrl.id = $ctrl.resolve.id;
                 $ctrl.asModal = $ctrl.resolve.asModal;
@@ -14,6 +15,7 @@
 
             service.getProduct($ctrl.id).then(function (r) {
                 $ctrl.product = r;
+                $ctrl.loading = false; 
             });
         }
 
