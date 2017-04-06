@@ -31,12 +31,13 @@ namespace MediaCatalog.Controllers
         {
             if (Request.IsAuthenticated)
             {
-                // Redirect to home page if the user is authenticated.
-                //return RedirectToAction("Index", "Home");
+                //Redirect to home page if the user is authenticated.
+                return RedirectToAction("Index", "Home");
             }
 
             return View();
         }
+
         //private ApplicationSignInManager _signInManager;
         //private ApplicationUserManager _userManager;
 
