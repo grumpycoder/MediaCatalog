@@ -34,6 +34,8 @@ namespace MediaCatalog.Controllers
 
             var pred = PredicateBuilder.True<Product>();
             if (!string.IsNullOrWhiteSpace(pager.Title)) pred = pred.And(p => p.Title.Contains(pager.Title));
+            if (!string.IsNullOrWhiteSpace(pager.Author)) pred = pred.And(p => p.Author.Contains(pager.Author));
+            if (!string.IsNullOrWhiteSpace(pager.LibraryCongressId)) pred = pred.And(p => p.LibraryCongressId.Contains(pager.LibraryCongressId));
             if (!string.IsNullOrWhiteSpace(pager.ISBN)) pred = pred.And(p => p.ISBN.Contains(pager.ISBN));
             if (!string.IsNullOrWhiteSpace(pager.Publisher)) pred = pred.And(p => p.Publisher.Name.Contains(pager.Publisher));
 
@@ -73,7 +75,13 @@ namespace MediaCatalog.Controllers
                 Title = model.Title,
                 ISBN = model.ISBN,
                 Summary = model.Summary,
-                PublisherId = model.PublisherId
+                PublisherId = model.PublisherId,
+                Author = model.Author,
+                LibraryCongressId = model.LibraryCongressId,
+                ReceiptDate = model.ReceiptDate,
+                Donated = model.Donated,
+                Reviewed = model.Reviewed,
+                Purchased = model.Purchased
             };
             _context.Products.Add(product);
             _context.SaveChanges();
@@ -83,7 +91,13 @@ namespace MediaCatalog.Controllers
                 Id = m.Id,
                 Title = m.Title,
                 ISBN = m.ISBN,
-                Publisher = m.Publisher.Name
+                Publisher = m.Publisher.Name,
+                Author = m.Author,
+                LibraryCongressId = m.LibraryCongressId,
+                ReceiptDate = m.ReceiptDate,
+                Donated = m.Donated,
+                Reviewed = m.Reviewed,
+                Purchased = m.Purchased
             }).FirstOrDefault(x => x.Id == product.Id);
 
             return Ok(media);
@@ -99,6 +113,12 @@ namespace MediaCatalog.Controllers
                 media.ISBN = model.ISBN;
                 media.Summary = model.Summary;
                 media.PublisherId = model.PublisherId;
+                media.Author = model.Author;
+                media.LibraryCongressId = model.LibraryCongressId;
+                media.ReceiptDate = model.ReceiptDate;
+                media.Donated = model.Donated;
+                media.Reviewed = model.Reviewed;
+                media.Purchased = model.Purchased;
             }
             _context.Products.AddOrUpdate(media);
             _context.SaveChanges();
@@ -110,7 +130,13 @@ namespace MediaCatalog.Controllers
                 Id = media.Id,
                 Title = media.Title,
                 ISBN = media.ISBN,
-                Publisher = media.Publisher.Name
+                Publisher = media.Publisher.Name,
+                Author = media.Author,
+                LibraryCongressId = media.LibraryCongressId,
+                ReceiptDate = media.ReceiptDate,
+                Donated = media.Donated,
+                Reviewed = media.Reviewed,
+                Purchased = media.Purchased
             };
             return product;
         }

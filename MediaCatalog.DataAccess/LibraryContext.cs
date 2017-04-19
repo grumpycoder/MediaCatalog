@@ -31,6 +31,12 @@ namespace MediaCatalog.DataAccess
             builder.Properties<string>().Configure(c => c.HasColumnType("varchar"));
             builder.Properties<DateTime>().Configure(c => c.HasColumnType("smalldatetime"));
 
+            builder.Entity<Product>().Property(x => x.ISBN).HasMaxLength(50);
+            builder.Entity<Product>().Property(x => x.Title).HasMaxLength(255);
+            builder.Entity<Product>().Property(x => x.Author).HasMaxLength(255);
+            builder.Entity<Product>().Property(x => x.Summary).HasMaxLength(1024);
+            builder.Entity<Product>().Property(x => x.LibraryCongressId).HasMaxLength(25);
+
             builder.Entity<Staff>().Property(x => x.Firstname).HasMaxLength(75);
             builder.Entity<Staff>().Property(x => x.Lastname).HasMaxLength(125);
             builder.Entity<Staff>().Property(x => x.Email).HasMaxLength(125);
