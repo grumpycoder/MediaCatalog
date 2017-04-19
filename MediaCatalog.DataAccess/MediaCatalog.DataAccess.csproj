@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201703281922441_adal-token.Designer.cs">
       <DependentUpon>201703281922441_adal-token.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704192137474_product-author-locid.cs" />
+    <Compile Include="Migrations\201704192137474_product-author-locid.Designer.cs">
+      <DependentUpon>201704192137474_product-author-locid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -115,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703281922441_adal-token.resx">
       <DependentUpon>201703281922441_adal-token.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704192137474_product-author-locid.resx">
+      <DependentUpon>201704192137474_product-author-locid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

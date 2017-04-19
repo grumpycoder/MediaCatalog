@@ -6,12 +6,41 @@
 <div class="modal-body">
     <treasure-overlay-spinner active='$ctrl.loading'>
         <fieldset>
-            <dl>
+            <div class="row">
+                <div class="col-md-6">
+                    <dl>
+                        <dt>Author</dt>
+                        <dd>{{ $ctrl.product.author|| 'No Author Available' }}</dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl>
+                        <dt>ISBN</dt>
+                        <dd>{{ $ctrl.product.isbn || 'No ISBN Available' }}</dd>
+                        <dt>Library Congress Id</dt>
+                        <dd>{{ $ctrl.product.libraryCongressId || 'No Id Available' }}</dd>
+                    </dl>
+                </div>
+                <div class="col-md-12">
+                    <dl>
+                        <dt>Summary</dt>
+                        <dd>{{ $ctrl.product.summary || 'No Summary Available' }}</dd>
+                    </dl>
+
+                </div>
+                
+            </div>
+            <!--<dl>
+                <dt>Author</dt>
+                <dd>{{ $ctrl.product.author }}</dd>
                 <dt>ISBN</dt>
                 <dd>{{ $ctrl.product.isbn }}</dd>
+                <dt>Library Congress Id</dt>
+                <dd>{{ $ctrl.product.libaryCongressId }}</dd>
+
                 <dt>Summary</dt>
                 <dd>{{ $ctrl.product.summary || 'No Summary Available' }}</dd>
-            </dl>
+            </dl>-->
 
         </fieldset>
 
