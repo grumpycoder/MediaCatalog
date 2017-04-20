@@ -26,7 +26,6 @@
         $ctrl.search = function (tableState) {
             $ctrl.loading = true;
             tableStateRef = tableState;
-            console.log('search');
             product.getAllProducts($ctrl.searchModel).then(function (r) {
                 $ctrl.products = r.results;
                 $ctrl.searchModel = r;

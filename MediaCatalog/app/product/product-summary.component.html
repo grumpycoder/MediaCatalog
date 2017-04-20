@@ -17,8 +17,8 @@
                     <dl>
                         <dt>ISBN</dt>
                         <dd>{{ $ctrl.product.isbn || 'No ISBN Available' }}</dd>
-                        <dt>Library Congress Id</dt>
-                        <dd>{{ $ctrl.product.libraryCongressId || 'No Id Available' }}</dd>
+                        <dt>Library of Congress Control Number</dt>
+                        <dd>{{ $ctrl.product.lccn || 'No Control Number Available' }}</dd>
                     </dl>
                 </div>
                 <div class="col-md-12">
@@ -30,18 +30,6 @@
                 </div>
                 
             </div>
-            <!--<dl>
-                <dt>Author</dt>
-                <dd>{{ $ctrl.product.author }}</dd>
-                <dt>ISBN</dt>
-                <dd>{{ $ctrl.product.isbn }}</dd>
-                <dt>Library Congress Id</dt>
-                <dd>{{ $ctrl.product.libaryCongressId }}</dd>
-
-                <dt>Summary</dt>
-                <dd>{{ $ctrl.product.summary || 'No Summary Available' }}</dd>
-            </dl>-->
-
         </fieldset>
 
         <fieldset>

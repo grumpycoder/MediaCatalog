@@ -2,48 +2,68 @@
 
 <form name="productForm" novalidate>
 
-        <div class="modal-body">
-            <fieldset>
-                <legend>{{$ctrl.title}}</legend>
-                <div class="form-group">
-                    <label class="control-label">Title</label>
-                    <input type="text" class="form-control" ng-model="$ctrl.product.title" autofocus />
+    <div class="modal-body">
+        <fieldset>
+            <legend>{{$ctrl.title}}</legend>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Title</label>
+                        <input type="text" class="form-control" ng-model="$ctrl.product.title" autofocus />
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Author</label>
-                    <input type="text" class="form-control" ng-model="$ctrl.product.author" autofocus />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Library Congress Id</label>
-                    <input type="text" class="form-control" ng-model="$ctrl.product.libraryCongressId" autofocus />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Summary</label>
-                    <textarea class="form-control" ng-model="$ctrl.product.summary"></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">ISBN</label>
-                    <input type="text" class="form-control" ng-model="$ctrl.product.isbn" />
-                </div>
-            </fieldset>
+            </div>
 
-            <fieldset>
-
-                <legend>Publisher</legend>
-                <div class="form-group">
-                    <publisher-select id=$ctrl.product.publisherId></publisher-select>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Author</label>
+                        <input type="text" class="form-control" ng-model="$ctrl.product.author" autofocus />
+                    </div>
                 </div>
-            </fieldset>
+            </div>
 
-        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Library of Congress Control Number</label>
+                        <input type="text" class="form-control" ng-model="$ctrl.product.lccn" autofocus />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">ISBN</label>
+                        <input type="text" class="form-control" ng-model="$ctrl.product.isbn" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Summary</label>
+                        <textarea class="form-control" ng-model="$ctrl.product.summary"></textarea>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
 
-        <div class="modal-footer">
-            <button class="btn btn-default" ng-click="$ctrl.cancel()">
-                Cancel
-            </button>
-            <button class="btn btn-primary" ng-click="$ctrl.save()">
-                Save
-            </button>
-        </div>
+        <fieldset>
+
+            <legend>Publisher</legend>
+            <div class="form-group">
+                <publisher-select id=$ctrl.product.publisherId></publisher-select>
+            </div>
+        </fieldset>
+
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="$ctrl.cancel()">
+            Cancel
+        </button>
+        <button class="btn btn-primary" ng-click="$ctrl.save()">
+            Save
+        </button>
+    </div>
 
 </form>

@@ -35,7 +35,7 @@ namespace MediaCatalog.DataAccess
             builder.Entity<Product>().Property(x => x.Title).HasMaxLength(255);
             builder.Entity<Product>().Property(x => x.Author).HasMaxLength(255);
             builder.Entity<Product>().Property(x => x.Summary).HasMaxLength(1024);
-            builder.Entity<Product>().Property(x => x.LibraryCongressId).HasMaxLength(25);
+            builder.Entity<Product>().Property(x => x.LCCN).HasMaxLength(25);
 
             builder.Entity<Staff>().Property(x => x.Firstname).HasMaxLength(75);
             builder.Entity<Staff>().Property(x => x.Lastname).HasMaxLength(125);

@@ -26,6 +26,7 @@
         $ctrl.save = function () {
             return service.save($ctrl.product).then(function (r) {
                 angular.extend($ctrl.product, r);
+                console.log('save product', $ctrl.product);
                 $ctrl.modalInstance.close($ctrl.product);
             }).catch(function (err) {
                 console.log('Error saving product', err.message);
