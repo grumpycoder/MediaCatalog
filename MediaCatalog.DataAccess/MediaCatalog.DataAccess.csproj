@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
@@ -93,6 +94,22 @@
     <Compile Include="Migrations\201704201328446_Product-LCCN-Update.Designer.cs">
       <DependentUpon>201704201328446_Product-LCCN-Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704202248590_Product-Auditable.cs" />
+    <Compile Include="Migrations\201704202248590_Product-Auditable.Designer.cs">
+      <DependentUpon>201704202248590_Product-Auditable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704202252284_Publisher-Auditable.cs" />
+    <Compile Include="Migrations\201704202252284_Publisher-Auditable.Designer.cs">
+      <DependentUpon>201704202252284_Publisher-Auditable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704202300443_Auditable-StringLength.cs" />
+    <Compile Include="Migrations\201704202300443_Auditable-StringLength.Designer.cs">
+      <DependentUpon>201704202300443_Auditable-StringLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704202302106_Staff-Auditable.cs" />
+    <Compile Include="Migrations\201704202302106_Staff-Auditable.Designer.cs">
+      <DependentUpon>201704202302106_Staff-Auditable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -136,6 +153,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704201328446_Product-LCCN-Update.resx">
       <DependentUpon>201704201328446_Product-LCCN-Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704202248590_Product-Auditable.resx">
+      <DependentUpon>201704202248590_Product-Auditable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704202252284_Publisher-Auditable.resx">
+      <DependentUpon>201704202252284_Publisher-Auditable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704202300443_Auditable-StringLength.resx">
+      <DependentUpon>201704202300443_Auditable-StringLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704202302106_Staff-Auditable.resx">
+      <DependentUpon>201704202302106_Staff-Auditable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

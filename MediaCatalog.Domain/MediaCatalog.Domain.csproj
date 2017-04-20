@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="IAuditable.cs" />
     <Compile Include="Publisher.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Staff.cs" />

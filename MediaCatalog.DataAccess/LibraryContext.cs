@@ -2,6 +2,10 @@
 using MediaCatalog.Domain;
 using System;
 using System.Data.Entity;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MediaCatalog.DataAccess
@@ -30,6 +34,9 @@ namespace MediaCatalog.DataAccess
 
             builder.Properties<string>().Configure(c => c.HasColumnType("varchar"));
             builder.Properties<DateTime>().Configure(c => c.HasColumnType("smalldatetime"));
+            //builder.Properties<string>().Configure(p => p.HasMaxLength(255));
+            builder.Properties().Where(p => p.Name == "CreatedUser").Configure(c => c.HasMaxLength(255));
+            builder.Properties().Where(p => p.Name == "ModifiedUser").Configure(c => c.HasMaxLength(255));
 
             builder.Entity<Product>().Property(x => x.ISBN).HasMaxLength(50);
             builder.Entity<Product>().Property(x => x.Title).HasMaxLength(255);
@@ -51,6 +58,26 @@ namespace MediaCatalog.DataAccess
             builder.Entity<Staff>().HasMany(e => e.Products).WithMany(e => e.Staff);
 
             base.OnModelCreating(builder);
+        }
+
+        public override Task<int> SaveChangesAsync()
+        {
+
+            var auditUser = HttpContext.Current.User.Identity.Name;
+
+            foreach (var entry in ChangeTracker.Entries<IAuditable>())
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Entity.CreatedUser = auditUser;
+                    entry.Entity.DateCreated = DateTime.Now;
+                }
+
+                if (entry.State != EntityState.Modified) continue;
+                entry.Entity.ModifiedUser = auditUser;
+                entry.Entity.DateModified = DateTime.Now;
+            }
+            return base.SaveChangesAsync();
         }
     }
 }

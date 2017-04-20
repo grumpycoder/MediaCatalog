@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
@@ -30,50 +31,45 @@ namespace MediaCatalog.Controllers
         }
 
         [HttpPost]
-        public object Post([FromBody] StaffModel model)
+        public async Task<object> Post([FromBody] StaffModel model)
         {
-            var staff = _context.Staff.Find(model.Id);
+            var staff = await _context.Staff.FindAsync(model.Id);
             if (staff == null) return NotFound();
 
             var m = Mapper.Map(model, staff);
             _context.Staff.AddOrUpdate(m);
 
             _context.Staff.AddOrUpdate(staff);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+
             return Ok(model);
         }
 
         [HttpPost, Route("{productId}")]
-        public object Post(int productId, [FromBody] StaffModel model)
+        public async Task<object> Post(int productId, [FromBody] StaffModel model)
         {
-            var product = _context.Products.Include("Staff").FirstOrDefault(e => e.Id == productId);
+            var product = await _context.Products.Include("Staff").FirstOrDefaultAsync(e => e.Id == productId);
             if (product == null) return NotFound();
 
-            var staff = new Staff()
-            {
-                Firstname = model.Firstname,
-                Lastname = model.Lastname,
-                Email = model.Email,
-                Role = model.Role
-            };
-
+            var staff = Mapper.Map<Staff>(model);
             _context.Staff.AddOrUpdate(staff);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+
             product.Staff.Add(staff);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             model = Mapper.Map<StaffModel>(staff);
             return Ok(model);
         }
 
         [HttpDelete, Route("{staffId}")]
-        public object Delete(int staffId)
+        public async Task<object> Delete(int staffId)
         {
-            var staff = _context.Staff.Find(staffId);
+            var staff = await _context.Staff.FindAsync(staffId);
             if (staff == null) return NotFound();
 
             _context.Staff.Remove(staff);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return Ok("Delete staff member");
         }
     }

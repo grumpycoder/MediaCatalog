@@ -1,10 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MediaCatalog.Domain
 {
-    public class Staff
+    public class Staff : IAuditable
     {
         public int Id { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateModified { get; set; }
+        public string CreatedUser { get; set; }
+        public string ModifiedUser { get; set; }
+
         public string Firstname { get; set; }
         public string Lastname { get; set; }
 
