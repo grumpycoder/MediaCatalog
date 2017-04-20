@@ -1,52 +1,84 @@
-﻿
+﻿<style>
+
+</style>
 
 <div class="modal-header">
     <h3 class="modal-title">{{$ctrl.product.title}}</h3>
 </div>
 <div class="modal-body">
     <treasure-overlay-spinner active='$ctrl.loading'>
+        <div class="row">
+            <div class="col-md-12">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl>
+                                <dt>Author</dt>
+                                <dd>{{ $ctrl.product.author || 'No Author Available' }}</dd>
+                                <dt>Received</dt>
+                                <dd>{{ $ctrl.product.receiptDate || 'No Receipt Date' | date: 'MM/dd/yyyy'}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl>
+                                <dt>ISBN</dt>
+                                <dd>{{ $ctrl.product.isbn || 'No ISBN Available' }}</dd>
+                                <dt>Library of Congress Control Number</dt>
+                                <dd>{{ $ctrl.product.lccn || 'No Control Number Available' }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span>
+                                <strong>Reviewed</strong>
+                            </span>
+                            <p>{{ $ctrl.product.reviewed ? 'Yes' : 'No' }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span>
+                                <strong>Donated</strong>
+                            </span>
+                            <p>{{ $ctrl.product.donated ? 'Yes' : 'No' }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span>
+                                <strong>Purchased</strong>
+                            </span>
+                            <p>{{ $ctrl.product.purchased ? 'Yes' : 'No' }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>
+                                <strong>Summary</strong>
+                            </span>
+                            <p>{{ $ctrl.product.summary || 'No Summary Available' }}</p>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
         <fieldset>
+            <legend>Publisher</legend>
             <div class="row">
-                <div class="col-md-6">
-                    <dl>
-                        <dt>Author</dt>
-                        <dd>{{ $ctrl.product.author|| 'No Author Available' }}</dd>
-                    </dl>
-                </div>
-                <div class="col-md-6">
-                    <dl>
-                        <dt>ISBN</dt>
-                        <dd>{{ $ctrl.product.isbn || 'No ISBN Available' }}</dd>
-                        <dt>Library of Congress Control Number</dt>
-                        <dd>{{ $ctrl.product.lccn || 'No Control Number Available' }}</dd>
-                    </dl>
-                </div>
                 <div class="col-md-12">
                     <dl>
-                        <dt>Summary</dt>
-                        <dd>{{ $ctrl.product.summary || 'No Summary Available' }}</dd>
+                        <dt>Name</dt>
+                        <dd>{{ $ctrl.product.publisher }}</dd>
+                        <dt>Website</dt>
+                        <dd>{{ $ctrl.product.website || 'No Website Available' }}</dd>
+                        <dt>Email</dt>
+                        <dd>{{ $ctrl.product.email || 'No Email Available' }}</dd>
                     </dl>
-
                 </div>
-                
             </div>
         </fieldset>
 
         <fieldset>
-            <legend>Publisher</legend>
-
-            <dl>
-                <dt>Name</dt>
-                <dd>{{ $ctrl.product.publisher }}</dd>
-                <dt>Website</dt>
-                <dd>{{ $ctrl.product.website || 'No Website Available' }}</dd>
-                <dt>Email</dt>
-                <dd>{{ $ctrl.product.email || 'No Email Available' }}</dd>
-            </dl>
-        </fieldset>
-
-        <fieldset>
-
             <legend>
                 Staff
                 <span class="pull-right">
@@ -54,8 +86,8 @@
                 </span>
             </legend>
             <staff-list staff="$ctrl.product.staff"></staff-list>
-
         </fieldset>
+
     </treasure-overlay-spinner>
 </div>
 <div class="modal-footer">

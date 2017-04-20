@@ -5,6 +5,12 @@
     function controller(service) {
         var $ctrl = this;
 
+        $ctrl.dateOptions = {
+            dateDisabled: false,
+            formatYear: 'yy'
+        };
+        $ctrl.dateFormat = "MM/DD/YYYY";
+
         $ctrl.$onInit = function () {
             $ctrl.title = 'New Product';
             if ($ctrl.resolve) {
@@ -14,9 +20,9 @@
                 service.getProduct($ctrl.id).then(function (r) {
                     $ctrl.product = r;
                     $ctrl.title = r.title;
+                    $ctrl.product.receiptDate = new Date(r.receiptDate); 
                 });
             }
-
         }
 
         $ctrl.cancel = function () {
@@ -26,7 +32,6 @@
         $ctrl.save = function () {
             return service.save($ctrl.product).then(function (r) {
                 angular.extend($ctrl.product, r);
-                console.log('save product', $ctrl.product);
                 $ctrl.modalInstance.close($ctrl.product);
             }).catch(function (err) {
                 console.log('Error saving product', err.message);

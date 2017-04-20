@@ -1,5 +1,26 @@
-﻿
+﻿<style>
+    input[type="checkbox"] {
+        display: none;
+    }
 
+    input[type="checkbox"] + .btn-group > label span {
+        width: 20px;
+    }
+
+    input[type="checkbox"] + .btn-group > label span:first-child {
+        display: none;
+    }
+    input[type="checkbox"] + .btn-group > label span:last-child {
+        display: inline-block;   
+    }
+
+    input[type="checkbox"]:checked + .btn-group > label span:first-child {
+        display: inline-block;
+    }
+    input[type="checkbox"]:checked + .btn-group > label span:last-child {
+        display: none;   
+    }
+</style>
 <form name="productForm" novalidate>
 
     <div class="modal-body">
@@ -13,16 +34,35 @@
                     </div>
                 </div>
             </div>
-
+           
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Author</label>
-                        <input type="text" class="form-control" ng-model="$ctrl.product.author" autofocus />
+                        <input type="text" class="form-control" ng-model="$ctrl.product.author" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <label class="control-label">Received</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   uib-datepicker-popup="MM/dd/yyyy"
+                                   datepicker-options="$ctrl.dateOptions"
+                                   date-input="$ctrl.dateFormat"
+                                   ng-model="$ctrl.product.receiptDate"
+                                   is-open="receiptDate.opened"
+                                   ng-required="true"
+                                   close-text="Close"/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="receiptDate.opened = !receiptDate.opened"><i class="fa fa-calendar"></i></button>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
-
+          
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -43,6 +83,63 @@
                         <label class="control-label">Summary</label>
                         <textarea class="form-control" ng-model="$ctrl.product.summary"></textarea>
                     </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <span class="pull-left">
+                                    <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" autocomplete="off" ng-model="$ctrl.product.reviewed" />
+                                    <span class="btn-group">
+                                        <label for="fancy-checkbox-default" class="btn btn-success">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                            <span> </span>
+                                        </label>
+                                        <label for="fancy-checkbox-default" class="btn btn-success active">
+                                            Reviewed
+                                        </label>
+                                    </span>
+                                </span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <span class="center-block">
+                                    <input type="checkbox" name="fancy-checkbox-default1" id="fancy-checkbox-default1" autocomplete="off" ng-model="$ctrl.product.purchased" />
+                                    <span class="btn-group">
+                                        <label for="fancy-checkbox-default1" class="btn btn-success">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                            <span> </span>
+                                        </label>
+                                        <label for="fancy-checkbox-default1" class="btn btn-success active">
+                                            Purchased
+                                        </label>
+                                    </span>
+                                </span>
+                            </div>
+                
+                            <div class="col-md-4">
+                    
+                                <span class="pull-right">
+                                    <input type="checkbox" name="fancy-checkbox-default2" id="fancy-checkbox-default2" autocomplete="off" ng-model="$ctrl.product.donated"/>
+                                    <span class="btn-group">
+                                        <label for="fancy-checkbox-default2" class="btn btn-success">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                            <span> </span>
+                                        </label>
+                                        <label for="fancy-checkbox-default2" class="btn btn-success active">
+                                            Donated
+                                        </label>
+                                    </span>
+                                </span>
+
+                            </div>
+
+
+                        </div>
+                    </p>
                 </div>
             </div>
         </fieldset>
