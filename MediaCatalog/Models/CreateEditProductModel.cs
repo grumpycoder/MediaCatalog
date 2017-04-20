@@ -12,8 +12,8 @@ namespace MediaCatalog.Models
         public int PublisherId { get; set; }
         public string LibraryCongressId { get; set; }
         public DateTime? ReceiptDate { get; set; }
-        public bool? Reviewed { get; set; }
-        public bool? Purchased { get; set; }
-        public bool? Donated { get; set; }
+        public bool Reviewed { get; set; }
+        public bool Purchased { get; set; }
+        public bool Donated { get; set; }
     }
 }

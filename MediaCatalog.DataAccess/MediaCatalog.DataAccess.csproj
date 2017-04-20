@@ -85,6 +85,10 @@
     <Compile Include="Migrations\201704192137474_product-author-locid.Designer.cs">
       <DependentUpon>201704192137474_product-author-locid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704201142368_product-bools.cs" />
+    <Compile Include="Migrations\201704201142368_product-bools.Designer.cs">
+      <DependentUpon>201704201142368_product-bools.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -122,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704192137474_product-author-locid.resx">
       <DependentUpon>201704192137474_product-author-locid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704201142368_product-bools.resx">
+      <DependentUpon>201704201142368_product-bools.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

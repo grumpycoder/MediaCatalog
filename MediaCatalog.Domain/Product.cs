@@ -15,9 +15,9 @@ namespace MediaCatalog.Domain
         public int PublisherId { get; set; }
 
         public DateTime? ReceiptDate { get; set; }
-        public bool? Reviewed { get; set; }
-        public bool? Purchased { get; set; }
-        public bool? Donated { get; set; }
+        public bool Reviewed { get; set; } = false;
+        public bool Purchased { get; set; } = false;
+        public bool Donated { get; set; } = false;
 
 
         public Publisher Publisher { get; set; }
