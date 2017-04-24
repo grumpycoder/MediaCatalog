@@ -6,7 +6,7 @@
 
     function controller($modal, $ngConfirm, toastr, product) {
         var $ctrl = this;
-        var pageSizeDefault = 10;
+        var pageSizeDefault = 15;
         var tableStateRef;
 
         $ctrl.searchModel = {

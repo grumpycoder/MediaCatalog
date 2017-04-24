@@ -7,5 +7,7 @@
         public string Publisher { get; set; }
         public string Author { get; set; }
         public string LCCN { get; set; }
+        public string Category { get; set; }
+        public bool? PermanentStatus { get; set; } = null;
     }
 }

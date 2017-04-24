@@ -18,6 +18,9 @@ namespace MediaCatalog.Models
         public bool Reviewed { get; set; }
         public bool Purchased { get; set; }
         public bool Donated { get; set; }
+        public string Category { get; set; }
+        public bool PermanentStatus { get; set; }
+
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

@@ -34,12 +34,15 @@ namespace MediaCatalog.Controllers
             var query = _context.Products;
             var totalCount = query.Count();
 
+
             var pred = PredicateBuilder.True<Product>();
             if (!string.IsNullOrWhiteSpace(pager.Title)) pred = pred.And(p => p.Title.Contains(pager.Title));
             if (!string.IsNullOrWhiteSpace(pager.Author)) pred = pred.And(p => p.Author.Contains(pager.Author));
             if (!string.IsNullOrWhiteSpace(pager.LCCN)) pred = pred.And(p => p.LCCN.Contains(pager.LCCN));
             if (!string.IsNullOrWhiteSpace(pager.ISBN)) pred = pred.And(p => p.ISBN.Contains(pager.ISBN));
+            if (!string.IsNullOrWhiteSpace(pager.Category)) pred = pred.And(p => p.Category.Contains(pager.Category));
             if (!string.IsNullOrWhiteSpace(pager.Publisher)) pred = pred.And(p => p.Publisher.Name.Contains(pager.Publisher));
+
 
             var filteredQuery = query.Where(pred);
             var pagerCount = filteredQuery.Count();
@@ -84,7 +87,7 @@ namespace MediaCatalog.Controllers
         public async Task<object> Put(CreateEditProductModel model)
         {
             var product = await _context.Products.FirstOrDefaultAsync(m => m.Id == model.Id);
-            if(product == null) return BadRequest();
+            if (product == null) return BadRequest();
 
             Mapper.Map(model, product);
 

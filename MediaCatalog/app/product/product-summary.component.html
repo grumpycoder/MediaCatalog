@@ -38,15 +38,15 @@
                         </div>
                         <div class="col-md-4">
                             <span>
-                                <strong>Donated</strong>
+                                <strong>Collection Status</strong>
                             </span>
-                            <p>{{ $ctrl.product.donated ? 'Yes' : 'No' }}</p>
+                            <p>{{ $ctrl.product.permanentStatus ? 'Permenant' : 'Review Copy' }}</p>
                         </div>
                         <div class="col-md-4">
                             <span>
-                                <strong>Purchased</strong>
+                                <strong>Category</strong>
                             </span>
-                            <p>{{ $ctrl.product.purchased ? 'Yes' : 'No' }}</p>
+                            <p>{{ $ctrl.product.category || 'No Category Available' }}</p>
                         </div>
                     </div>
 

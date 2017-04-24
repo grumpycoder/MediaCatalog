@@ -34,6 +34,7 @@
                     <th st-sort="libraryCongressId">LCCN</th>
                     <th st-sort="isbn">ISBN</th>
                     <th st-sort="publisher">Publisher</th>
+                    <th st-sort="category">Category</th>
                     <th></th>
                 </tr>
                 <tr>
@@ -42,6 +43,7 @@
                     <td><input type="text" ng-model="$ctrl.searchModel.lccn" class="form-control" placeholder="LCCN" /></td>
                     <td><input type="text" ng-model="$ctrl.searchModel.isbn" class="form-control" placeholder="ISBN" /></td>
                     <td><input type="text" ng-model="$ctrl.searchModel.publisher" class="form-control" placeholder="Publisher Name" /></td>
+                    <td><input type="text" ng-model="$ctrl.searchModel.category" class="form-control" placeholder="Category" /></td>
                     <td></td>
                 </tr>
             </thead>
@@ -54,6 +56,7 @@
                     <td>{{item.lccn}}</td>
                     <td>{{item.isbn}}</td>
                     <td>{{item.publisher}}</td>
+                    <td>{{item.category}}</td>
                     <td class="text-nowrap">
                         <a ng-click="$ctrl.edit(item)">Edit</a> |
                         <a ng-click="$ctrl.delete(item)">Delete</a>
@@ -62,7 +65,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="6">
+                    <td colspan="7">
                         <span uib-pagination total-items="$ctrl.searchModel.filteredCount"
                               ng-model="$ctrl.searchModel.page"
                               max-size="5"

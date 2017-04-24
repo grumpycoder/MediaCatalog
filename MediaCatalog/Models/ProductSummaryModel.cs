@@ -24,6 +24,9 @@ namespace MediaCatalog.Models
         public bool? Donated { get; set; }
         public int PublisherId { get; set; }
 
+        public string Category { get; set; }
+        public bool PermanentStatus { get; set; }
+
         public List<Staff> Staff { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
