@@ -1,0 +1,97 @@
+﻿
+<form name="form" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">{{$ctrl.title}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="bg-danger" ng-show="$ctrl.errors">
+            <ul>
+                <li ng-repeat="error in $ctrl.errors">{{error}}</li>
+            </ul>
+        </div> 
+
+        <fieldset>
+           
+            <div class="form-group">
+                <label class="control-label">Name <span class="text-muted">(Required)</span></label>
+                <input type="text" name="name" ng-model="$ctrl.publisher.name" class="form-control" placeholder="Name" required autofocus/>
+                <p ng-show="form.name.$invalid && !form.name.$pristine && form.name.$error.required" class="help-block">Name is required.</p>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Website</label>
+                <input type="text" ng-model="$ctrl.publisher.websiteUrl" class="form-control" placeholder="Website URL"/>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-sm-2 control-label">Phone</label>
+                    <div class="col-sm-4">
+                        <input type="text" ng-model="$ctrl.publisher.phone" class="form-control" placeholder="Phone"/>
+                    </div>
+
+                    <label class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-4">
+                        <input type="text" ng-model="$ctrl.publisher.email" class="form-control" placeholder="Email"/>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+        <fieldset>
+            <legend>Address</legend>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-sm-2 control-label">Street</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="Address Line 1" class="form-control" ng-model="$ctrl.publisher.address">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-sm-2 control-label">Street</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="Address Line 2" class="form-control" ng-model="$ctrl.publisher.address2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-sm-2 control-label">City</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="City" class="form-control" ng-model="$ctrl.publisher.city">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-sm-2 control-label">State</label>
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="State" class="form-control" ng-model="$ctrl.publisher.state">
+                    </div>
+
+                    <label class="col-sm-2 control-label">Zipcode</label>
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="Zipcode" class="form-control" ng-model="$ctrl.publisher.zipcode">
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+
+        <button class="btn btn-default" ng-click="$ctrl.cancel()">
+            Cancel
+        </button>
+        <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="$ctrl.save()">
+            Save
+        </button>
+    </div>
+</form>
+

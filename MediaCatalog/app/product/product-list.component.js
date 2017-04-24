@@ -69,7 +69,9 @@
             }).result.then(function (result) {
                 angular.extend(item, result);
                 toastr.info('Saved ' + result.title);
-            }, function (reason) {
+                }, function (reason) {
+                    console.log('reason', reason);
+
             });
         }
 

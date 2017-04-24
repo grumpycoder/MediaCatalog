@@ -20,7 +20,7 @@
                 service.getProduct($ctrl.id).then(function (r) {
                     $ctrl.product = r;
                     $ctrl.title = r.title;
-                    $ctrl.product.receiptDate = new Date(r.receiptDate); 
+                    $ctrl.product.receiptDate = new Date(r.receiptDate);
                 });
             }
         }
@@ -39,6 +39,9 @@
             });
         }
 
+        $ctrl.publisherChanged = function () {
+            console.log('publisher changed');
+        }
     }
 
     module.component('productEdit',

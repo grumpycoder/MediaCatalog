@@ -274,6 +274,9 @@
     <Content Include="app\product\product-list.component.html" />
     <Content Include="app\product\product-summary.component.html" />
     <Content Include="app\product\product-summary.component.js" />
+    <Content Include="app\publishers\publisher-edit.component.html" />
+    <Content Include="app\publishers\publisher-edit.component.js" />
+    <Content Include="app\services\publisher.service.js" />
     <Content Include="app\services\product.service.js" />
     <Content Include="app\directives\stTable.directive.js" />
     <Content Include="app\staff\staff-edit.component.html" />
