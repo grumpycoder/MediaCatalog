@@ -31,7 +31,7 @@
                 <tr>
                     <th st-sort="title">Title</th>
                     <th st-sort="author">Author</th>
-                    <th st-sort="libraryCongressId">Congress Id</th>
+                    <th st-sort="libraryCongressId">LCCN</th>
                     <th st-sort="isbn">ISBN</th>
                     <th st-sort="publisher">Publisher</th>
                     <th></th>
@@ -39,7 +39,7 @@
                 <tr>
                     <td><input type="text" ng-model="$ctrl.searchModel.title" class="form-control" placeholder="Title" /></td>
                     <td><input type="text" ng-model="$ctrl.searchModel.author" class="form-control" placeholder="Author" /></td>
-                    <td><input type="text" ng-model="$ctrl.searchModel.libraryCongressId" class="form-control" placeholder="Congress Id" /></td>
+                    <td><input type="text" ng-model="$ctrl.searchModel.lccn" class="form-control" placeholder="LCCN" /></td>
                     <td><input type="text" ng-model="$ctrl.searchModel.isbn" class="form-control" placeholder="ISBN" /></td>
                     <td><input type="text" ng-model="$ctrl.searchModel.publisher" class="form-control" placeholder="Publisher Name" /></td>
                     <td></td>
@@ -51,7 +51,7 @@
                         <a>{{item.title}}</a>
                     </td>
                     <td>{{item.author}}</td>
-                    <td>{{item.libraryCongressId}}</td>
+                    <td>{{item.lccn}}</td>
                     <td>{{item.isbn}}</td>
                     <td>{{item.publisher}}</td>
                     <td class="text-nowrap">
@@ -62,7 +62,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="6">
                         <span uib-pagination total-items="$ctrl.searchModel.filteredCount"
                               ng-model="$ctrl.searchModel.page"
                               max-size="5"

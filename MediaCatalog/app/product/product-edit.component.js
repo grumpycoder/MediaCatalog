@@ -5,6 +5,12 @@
     function controller(service) {
         var $ctrl = this;
 
+        $ctrl.dateOptions = {
+            dateDisabled: false,
+            formatYear: 'yy'
+        };
+        $ctrl.dateFormat = "MM/DD/YYYY";
+
         $ctrl.$onInit = function () {
             $ctrl.title = 'New Product';
             if ($ctrl.resolve) {
@@ -14,9 +20,9 @@
                 service.getProduct($ctrl.id).then(function (r) {
                     $ctrl.product = r;
                     $ctrl.title = r.title;
+                    $ctrl.product.receiptDate = new Date(r.receiptDate);
                 });
             }
-
         }
 
         $ctrl.cancel = function () {
@@ -33,6 +39,9 @@
             });
         }
 
+        $ctrl.publisherChanged = function () {
+            console.log('publisher changed');
+        }
     }
 
     module.component('productEdit',
