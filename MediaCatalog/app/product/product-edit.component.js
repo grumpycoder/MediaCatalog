@@ -12,7 +12,7 @@
         $ctrl.dateFormat = "MM/DD/YYYY";
 
         $ctrl.$onInit = function () {
-            $ctrl.title = 'New Product';
+            $ctrl.title = 'New Media';
             if ($ctrl.resolve) {
                 $ctrl.id = $ctrl.resolve.id;
             }
@@ -30,6 +30,7 @@
         }
 
         $ctrl.save = function () {
+            if ($ctrl.product.category === '') $ctrl.product.category = null;
             return service.save($ctrl.product).then(function (r) {
                 angular.extend($ctrl.product, r);
                 $ctrl.modalInstance.close($ctrl.product);

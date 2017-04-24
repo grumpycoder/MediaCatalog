@@ -110,6 +110,18 @@
     <Compile Include="Migrations\201704202302106_Staff-Auditable.Designer.cs">
       <DependentUpon>201704202302106_Staff-Auditable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704241931596_ProductCategory.cs" />
+    <Compile Include="Migrations\201704241931596_ProductCategory.Designer.cs">
+      <DependentUpon>201704241931596_ProductCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704241940180_ProductCategory2.cs" />
+    <Compile Include="Migrations\201704241940180_ProductCategory2.Designer.cs">
+      <DependentUpon>201704241940180_ProductCategory2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704241956062_DatabaseFix.cs" />
+    <Compile Include="Migrations\201704241956062_DatabaseFix.Designer.cs">
+      <DependentUpon>201704241956062_DatabaseFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -165,6 +177,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704202302106_Staff-Auditable.resx">
       <DependentUpon>201704202302106_Staff-Auditable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704241931596_ProductCategory.resx">
+      <DependentUpon>201704241931596_ProductCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704241940180_ProductCategory2.resx">
+      <DependentUpon>201704241940180_ProductCategory2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704241956062_DatabaseFix.resx">
+      <DependentUpon>201704241956062_DatabaseFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -87,6 +87,30 @@
             </div>
             
             <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Collection Status</label>
+                        <select ng-model="$ctrl.product.permanentStatus" class="form-control">
+                            <option ng-value="false">Review Copy</option>
+                            <option ng-value="true">Permanent Collection</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Category</label>
+                        <select ng-model="$ctrl.product.category" class="form-control">
+                            <option value="">None</option>
+                            <option value="Elementary School">Elementary School</option>
+                            <option value="Middle School">Middle School</option>
+                            <option value="High School">High School</option>
+                            <option value="Professional Development">Professional Development</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="row">
                 <div class="col-md-12">
                     <p>
                         <div class="row">
@@ -105,43 +129,10 @@
                                 </span>
                             </div>
 
-                            <div class="col-md-4">
-                                <span class="center-block">
-                                    <input type="checkbox" name="fancy-checkbox-default1" id="fancy-checkbox-default1" autocomplete="off" ng-model="$ctrl.product.purchased" />
-                                    <span class="btn-group">
-                                        <label for="fancy-checkbox-default1" class="btn btn-success">
-                                            <span class="glyphicon glyphicon-ok"></span>
-                                            <span> </span>
-                                        </label>
-                                        <label for="fancy-checkbox-default1" class="btn btn-success active">
-                                            Purchased
-                                        </label>
-                                    </span>
-                                </span>
-                            </div>
-                
-                            <div class="col-md-4">
-                    
-                                <span class="pull-right">
-                                    <input type="checkbox" name="fancy-checkbox-default2" id="fancy-checkbox-default2" autocomplete="off" ng-model="$ctrl.product.donated"/>
-                                    <span class="btn-group">
-                                        <label for="fancy-checkbox-default2" class="btn btn-success">
-                                            <span class="glyphicon glyphicon-ok"></span>
-                                            <span> </span>
-                                        </label>
-                                        <label for="fancy-checkbox-default2" class="btn btn-success active">
-                                            Donated
-                                        </label>
-                                    </span>
-                                </span>
-
-                            </div>
-
-
                         </div>
                     </p>
                 </div>
-            </div>
+            </div>-->
         </fieldset>
 
         <fieldset>

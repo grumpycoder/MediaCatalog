@@ -30,6 +30,7 @@ namespace MediaCatalog.DataAccess
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
+            Database.SetInitializer<LibraryContext>(null);
             builder.Conventions.Add(new ForeignKeyNamingConvention());
 
             builder.Properties<string>().Configure(c => c.HasColumnType("varchar"));
@@ -43,6 +44,7 @@ namespace MediaCatalog.DataAccess
             builder.Entity<Product>().Property(x => x.Author).HasMaxLength(255);
             builder.Entity<Product>().Property(x => x.Summary).HasMaxLength(1024);
             builder.Entity<Product>().Property(x => x.LCCN).HasMaxLength(25);
+            builder.Entity<Product>().Property(x => x.Category).HasMaxLength(255);
 
             builder.Entity<Staff>().Property(x => x.Firstname).HasMaxLength(75);
             builder.Entity<Staff>().Property(x => x.Lastname).HasMaxLength(125);

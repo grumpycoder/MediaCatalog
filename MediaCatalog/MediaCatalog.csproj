@@ -61,11 +61,6 @@
       <HintPath>..\MediaCatalog.DataAccess\bin\Debug\MediaCatalog.DataAccess.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MediaCatalog.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MediaCatalog.Domain\bin\Debug\MediaCatalog.Domain.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.7\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
     </Reference>
@@ -342,6 +337,12 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\SignOutCallback.cshtml" />
     <None Include="Properties\PublishProfiles\MediaCatalogStage - Web Deploy.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaCatalog.Domain\MediaCatalog.Domain.csproj">
+      <Project>{90a5185d-65b6-49fb-ad33-97c7077c4e3e}</Project>
+      <Name>MediaCatalog.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
