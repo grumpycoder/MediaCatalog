@@ -1,5 +1,5 @@
 ﻿
-<div st-table="$ctrl.model" st-pipe="$ctrl.search">
+<div st-table="$ctrl.products" st-pipe="$ctrl.search">
     <div>
         <h3 class="modal-title">{{$ctrl.title}}</h3>
         <small>({{$ctrl.searchModel.filteredCount}} / {{$ctrl.searchModel.totalCount}}) Total Records</small>
@@ -28,55 +28,61 @@
     <treasure-overlay-spinner active='$ctrl.loading'>
         <table class="table table-bordered table-responsive table-hover">
             <thead>
-                <tr>
-                    <th st-sort="title">Title</th>
-                    <th st-sort="author">Author</th>
-                    <th st-sort="libraryCongressId">LCCN</th>
-                    <th st-sort="isbn">ISBN</th>
-                    <th st-sort="publisher">Publisher</th>
-                    <th st-sort="category">Category</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td><input type="text" ng-model="$ctrl.searchModel.title" class="form-control" placeholder="Title" /></td>
-                    <td><input type="text" ng-model="$ctrl.searchModel.author" class="form-control" placeholder="Author" /></td>
-                    <td><input type="text" ng-model="$ctrl.searchModel.lccn" class="form-control" placeholder="LCCN" /></td>
-                    <td><input type="text" ng-model="$ctrl.searchModel.isbn" class="form-control" placeholder="ISBN" /></td>
-                    <td><input type="text" ng-model="$ctrl.searchModel.publisher" class="form-control" placeholder="Publisher Name" /></td>
-                    <td><input type="text" ng-model="$ctrl.searchModel.category" class="form-control" placeholder="Category" /></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <th st-sort="title">Title</th>
+                <th st-sort="author">Author</th>
+                <th st-sort="libraryCongressId">LCCN</th>
+                <th st-sort="isbn">ISBN</th>
+                <th st-sort="publisher">Publisher</th>
+                <th st-sort="category">Category</th>
+                <th st-sort="reviewYear">Year</th>
+                <th st-sort="reviewSeason">Season</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><input type="text" ng-model="$ctrl.searchModel.title" class="form-control" placeholder="Title" /></td>
+                <td><input type="text" ng-model="$ctrl.searchModel.author" class="form-control" placeholder="Author" /></td>
+                <td><input type="text" ng-model="$ctrl.searchModel.lccn" class="form-control" placeholder="LCCN" /></td>
+                <td><input type="text" ng-model="$ctrl.searchModel.isbn" class="form-control" placeholder="ISBN" /></td>
+                <td><input type="text" ng-model="$ctrl.searchModel.publisher" class="form-control" placeholder="Publisher Name" /></td>
+                <td><input type="text" ng-model="$ctrl.searchModel.category" class="form-control" placeholder="Category" /></td>
+                <td><input type="text" ng-model="$ctrl.searchModel.reviewYear" class="form-control" placeholder="Year" /></td>
+                <td><input type="text" ng-model="$ctrl.searchModel.reviewSeason" class="form-control" placeholder="Season" /></td>
+                <td></td>
+            </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in $ctrl.products">
-                    <td ng-click="$ctrl.showDetails(item)">
-                        <a>{{item.title}}</a>
-                    </td>
-                    <td>{{item.author}}</td>
-                    <td>{{item.lccn}}</td>
-                    <td>{{item.isbn}}</td>
-                    <td>{{item.publisher}}</td>
-                    <td>{{item.category}}</td>
-                    <td class="text-nowrap">
-                        <a ng-click="$ctrl.edit(item)">Edit</a> |
-                        <a ng-click="$ctrl.delete(item)">Delete</a>
-                    </td>
-                </tr>
+            <tr ng-repeat="item in $ctrl.products">
+                <td ng-click="$ctrl.showDetails(item)">
+                    <a>{{item.title}}</a>
+                </td>
+                <td>{{item.author}}</td>
+                <td>{{item.lccn}}</td>
+                <td>{{item.isbn}}</td>
+                <td>{{item.publisher}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.reviewYear}}</td>
+                <td>{{item.reviewSeason}}</td>
+                <td class="text-nowrap">
+                    <a ng-click="$ctrl.edit(item)">Edit</a> |
+                    <a ng-click="$ctrl.delete(item)">Delete</a>
+                </td>
+            </tr>
             </tbody>
             <tfoot>
-                <tr>
-                    <td colspan="7">
-                        <span uib-pagination total-items="$ctrl.searchModel.filteredCount"
-                              ng-model="$ctrl.searchModel.page"
-                              max-size="5"
-                              items-per-page="$ctrl.searchModel.pageSize"
-                              class="pagination-sm"
-                              boundary-link-numbers="true"
-                              ng-change="$ctrl.paged()"
-                              rotate="false">
-                        </span>
-                    </td>
-                </tr>
+            <tr>
+                <td colspan="9">
+                    <span uib-pagination total-items="$ctrl.searchModel.filteredCount"
+                          ng-model="$ctrl.searchModel.page"
+                          max-size="5"
+                          items-per-page="$ctrl.searchModel.pageSize"
+                          class="pagination-sm"
+                          boundary-link-numbers="true"
+                          ng-change="$ctrl.paged()"
+                          rotate="false">
+                    </span>
+                </td>
+            </tr>
             </tfoot>
         </table>
     </treasure-overlay-spinner>

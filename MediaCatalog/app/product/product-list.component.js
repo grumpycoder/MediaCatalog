@@ -26,6 +26,15 @@
         $ctrl.search = function (tableState) {
             $ctrl.loading = true;
             tableStateRef = tableState;
+
+            if (typeof (tableState.sort.predicate) !== "undefined") {
+                $ctrl.searchModel.orderBy = tableState.sort.predicate;
+                $ctrl.searchModel.orderDirection = tableState.sort.reverse ? 'desc' : 'asc';
+            } else {
+                $ctrl.searchModel.orderBy = null;
+                $ctrl.searchModel.orderDirection = null;
+            }
+
             product.getAllProducts($ctrl.searchModel).then(function (r) {
                 $ctrl.products = r.results;
                 $ctrl.searchModel = r;

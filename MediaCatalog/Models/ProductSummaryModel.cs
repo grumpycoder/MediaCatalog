@@ -19,13 +19,16 @@ namespace MediaCatalog.Models
         public string Website { get; set; }
         public string Email { get; set; }
         public DateTime? ReceiptDate { get; set; }
-        public bool? Reviewed { get; set; }
+        public string ReviewSeason { get; set; }
+        public int? ReviewYear { get; set; }
+        public string Review { get; set; }
         public bool? Purchased { get; set; }
         public bool? Donated { get; set; }
         public int PublisherId { get; set; }
 
         public string Category { get; set; }
         public bool PermanentStatus { get; set; }
+
 
         public List<Staff> Staff { get; set; }
 
@@ -37,7 +40,8 @@ namespace MediaCatalog.Models
                 .ForMember(d => d.Email, opt => opt.MapFrom(s => s.Publisher.Email))
                 .ForMember(d => d.Staff, opt => opt.MapFrom(s => s.Staff))
                 .ForMember(d => d.PublisherId, opt => opt.MapFrom(s => s.PublisherId))
-                ;
+                .ForMember(d => d.Review, opt => opt.ResolveUsing(s => $"{s.ReviewSeason} {s.ReviewYear}"))
+            ;
 
         }
     }

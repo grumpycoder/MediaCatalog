@@ -41,6 +41,8 @@ namespace MediaCatalog.Controllers
             if (!string.IsNullOrWhiteSpace(pager.LCCN)) pred = pred.And(p => p.LCCN.Contains(pager.LCCN));
             if (!string.IsNullOrWhiteSpace(pager.ISBN)) pred = pred.And(p => p.ISBN.Contains(pager.ISBN));
             if (!string.IsNullOrWhiteSpace(pager.Category)) pred = pred.And(p => p.Category.Contains(pager.Category));
+            if (pager.ReviewYear != null) pred = pred.And(p => p.ReviewYear == pager.ReviewYear);
+            if (!string.IsNullOrWhiteSpace(pager.ReviewSeason)) pred = pred.And(p => p.ReviewSeason.Equals(pager.ReviewSeason));
             if (!string.IsNullOrWhiteSpace(pager.Publisher)) pred = pred.And(p => p.Publisher.Name.Contains(pager.Publisher));
 
 
@@ -64,12 +66,14 @@ namespace MediaCatalog.Controllers
 
         }
 
-        public object Get(int id)
+        public async Task<object> Get(int id)
         {
-            var product = _context.Products.Include("Staff")
-                                           .Include("Publisher")
-                                           .ProjectTo<ProductSummaryModel>().FirstOrDefault(p => p.Id == id);
-            return product;
+            var product = await _context.Products.Include("Staff")
+                .Include("Publisher")
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            var dto = Mapper.Map<ProductSummaryModel>(product);
+            return Ok(dto);
         }
 
         public object Post(CreateEditProductModel model)
@@ -91,37 +95,11 @@ namespace MediaCatalog.Controllers
 
             Mapper.Map(model, product);
 
-            //if (media != null)
-            //{
-            //    media.Title = model.Title;
-            //    media.ISBN = model.ISBN;
-            //    media.Summary = model.Summary;
-            //    media.PublisherId = model.PublisherId;
-            //    media.Author = model.Author;
-            //    media.LibraryCongressId = model.LibraryCongressId;
-            //    media.ReceiptDate = model.ReceiptDate;
-            //    media.Donated = model.Donated;
-            //    media.Reviewed = model.Reviewed;
-            //    media.Purchased = model.Purchased;
-            //}
             _context.Products.AddOrUpdate(product);
             await _context.SaveChangesAsync();
 
             product = _context.Products.Include("Publisher").FirstOrDefault(m => m.Id == model.Id);
 
-            //var product = new ProductModel()
-            //{
-            //    Id = media.Id,
-            //    Title = media.Title,
-            //    ISBN = media.ISBN,
-            //    Publisher = media.Publisher.Name,
-            //    Author = media.Author,
-            //    LibraryCongressId = media.LibraryCongressId,
-            //    ReceiptDate = media.ReceiptDate,
-            //    Donated = media.Donated,
-            //    Reviewed = media.Reviewed,
-            //    Purchased = media.Purchased
-            //};
             var summary = Mapper.Map<ProductSummaryModel>(product);
             return Ok(summary);
         }
