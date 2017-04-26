@@ -109,32 +109,31 @@
                     </div>
                 </div>
             </div>
-
-            <!--<div class="row">
-                <div class="col-md-12">
-                    <p>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <span class="pull-left">
-                                    <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" autocomplete="off" ng-model="$ctrl.product.reviewed" />
-                                    <span class="btn-group">
-                                        <label for="fancy-checkbox-default" class="btn btn-success">
-                                            <span class="glyphicon glyphicon-ok"></span>
-                                            <span> </span>
-                                        </label>
-                                        <label for="fancy-checkbox-default" class="btn btn-success active">
-                                            Reviewed
-                                        </label>
-                                    </span>
-                                </span>
-                            </div>
-
-                        </div>
-                    </p>
-                </div>
-            </div>-->
+           
         </fieldset>
-
+        
+        <fieldset>
+            <legend>Review Edition</legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Season</label>
+                        <select ng-model="$ctrl.product.reviewSeason" class="form-control">
+                            <option value="">None</option>
+                            <option value="Spring">Spring</option>
+                            <option value="Summer">Summary</option>
+                            <option value="Fall">Fall</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Year</label>
+                        <input type="text" class="form-control" ng-model="$ctrl.product.reviewYear" />
+                    </div>
+                </div>
+            </div>
+        </fieldset>
         <fieldset>
 
             <legend>Publisher</legend>

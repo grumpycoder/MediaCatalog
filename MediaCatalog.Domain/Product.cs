@@ -16,14 +16,15 @@ namespace MediaCatalog.Domain
         public string Author { get; set; }
         public string LCCN { get; set; }
         public string Category { get; set; }
+        public string ReviewSeason { get; set; }
+        public int? ReviewYear { get; set; }
 
         public string Summary { get; set; }
         public int PublisherId { get; set; }
 
-        public bool PermanentStatus { get; set; } 
+        public bool PermanentStatus { get; set; }
 
         public DateTime? ReceiptDate { get; set; }
-        public bool Reviewed { get; set; } = false;
         public bool Purchased { get; set; } = false;
         public bool Donated { get; set; } = false;
 

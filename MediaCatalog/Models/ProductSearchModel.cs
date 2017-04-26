@@ -9,5 +9,7 @@
         public string LCCN { get; set; }
         public string Category { get; set; }
         public bool? PermanentStatus { get; set; } = null;
+        public int? ReviewYear { get; set; }
+        public string ReviewSeason { get; set; }
     }
 }

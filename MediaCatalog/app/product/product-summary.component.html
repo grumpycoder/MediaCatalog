@@ -32,9 +32,10 @@
                     <div class="row">
                         <div class="col-md-4">
                             <span>
-                                <strong>Reviewed</strong>
+                                <strong>Review</strong>
                             </span>
-                            <p>{{ $ctrl.product.reviewed ? 'Yes' : 'No' }}</p>
+                            <p>{{ $ctrl.product.reviewSeason ? $ctrl.product.review : 'No Review' }}</p>
+
                         </div>
                         <div class="col-md-4">
                             <span>
